@@ -10,7 +10,6 @@ public class Student {
     private String fullName;   // ПІБ студента
     private int group;       // Група студента
     private int course;         // Курс студента
-    private String specialty;   // Спеціальність студента
     private String faculty;     // Факультет студента
     private String department;  // Кафедра студента
 
@@ -36,7 +35,6 @@ public class Student {
         this.fullName = fullName;
         this.group = group;
         this.course = course;
-        this.specialty = specialty;
         this.faculty = faculty;
         this.department = department;
     }
@@ -97,24 +95,6 @@ public class Student {
     }
 
     /**
-     * Повернути назву спеціальності
-     *
-     * @return Назва спеціальності
-     */
-    public String getSpecialty() {
-        return specialty;
-    }
-
-    /**
-     * Встановити нову назву спеціальності
-     *
-     * @param specialty Нова назва спеціальності
-     */
-    public void setSpecialty(String specialty) {
-        this.specialty = specialty;
-    }
-
-    /**
      * Повернути назву факультету
      *
      * @return Назва факультету
@@ -171,11 +151,7 @@ public class Student {
                     this.course = Integer.parseInt(tk.nextToken());
                     ;
                     break;
-
                 case 4:
-                    this.specialty = tk.nextToken();
-                    break;
-                case 5:
                     this.faculty = tk.nextToken();
                     break;
                 default:
@@ -191,7 +167,7 @@ public class Student {
      * @return Повна інформація про студента
      */
     public String getStudentFullInfo() {
-        return fullName + " " + group + " " + course + " " + specialty + " " + faculty + " " + department;
+        return fullName + " " + group + " " + course + " " + faculty + " " + department;
     }
 
     /**
@@ -205,7 +181,6 @@ public class Student {
                 "ПІБ: " + fullName +
                 ", група: " + group +
                 ", курс: " + course +
-                ", спеціальність: " + specialty +
                 ", факультет: " + faculty +
                 ", кафедра: " + department + ";";
     }
