@@ -2,9 +2,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 public class DataInput {
-    public DataInput() {
-    }
-
 // це клас для зчитування інформції
     /**
      * приклад використання:
@@ -14,7 +11,7 @@ public class DataInput {
      * int instance = di.getInt("Введіть якесь число")
      * }
      * */
-    public  Long getLong(String prompt){
+    public static Long getLong(String prompt){
         String s = "";
         while (true) {
             try {
@@ -34,7 +31,7 @@ public class DataInput {
         }
     }
 
-    public Double getDouble(String prompt){
+    public static Double getDouble(String prompt){
         String s = "";
         while (true) {
             try {
@@ -54,7 +51,7 @@ public class DataInput {
         }
     }
 
-    public char getChar(String prompt){
+    public static char getChar(String prompt){
         String s = "";
         while (true) {
             try {
@@ -70,7 +67,7 @@ public class DataInput {
             }
         }
     }
-    public Integer getInt(String prompt){
+    public static Integer getInt(String prompt){
         String s = "";
         while (true) {
             try {
@@ -98,7 +95,7 @@ public class DataInput {
         return s;
     }
 
-    public String getString(String prompt) {
+    public static String getString(String prompt) {
         InputStreamReader isr = new InputStreamReader(System.in);
         BufferedReader br = new BufferedReader(isr);
         String s = null;

@@ -1,11 +1,7 @@
-public class Main {
-    private static  DataInput di = new DataInput();
-    private static EditMenu em = new EditMenu();
-    private static StatMenu sm = new StatMenu();
-    private static AddMenu am = new AddMenu();
+public class Main { ;
     public static void main(String[] args) {
         while (true) {
-            char act = di.getChar("Введіть номер дії, яку хочете виконати:\n" +
+            char act = DataInput.getChar("Введіть номер дії, яку хочете виконати:\n" +
                     "1. Перейти до меню редагування кафедр та факультетів\n" +
                     "2. Перейти до меню редагуваня списків\n" +
                     "3. Перейти до меню пошуку та фільтрування списків\n" +
@@ -13,12 +9,15 @@ public class Main {
 
             switch (act) {
                 case '1':
+                    EditMenu em = new EditMenu();
                     em.run();
                     break;
                 case '2':
+                    AddMenu am = new AddMenu();
                     am.run();
                     break;
                 case '3':
+                    StatMenu sm = new StatMenu();
                     sm.run();
                     break;
                 case 'b':
