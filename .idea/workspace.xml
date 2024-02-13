@@ -4,18 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef4ad7dd-768a-49f6-a18e-2cea82bf9295" name="Changes" comment="підредагував написане">
-      <change afterPath="$PROJECT_DIR$/src/Human.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_5_2024_8_33_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_5_2024_8_33_PM__Changes_.xml" beforeDir="false" />
+    <list default="true" id="ef4ad7dd-768a-49f6-a18e-2cea82bf9295" name="Changes" comment="додав батьківський клас Human і видалив зайве">
+      <change afterPath="$PROJECT_DIR$/src/Cathedra.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Faculty.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Group.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Student.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Teacher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Faculty.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Student.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Teacher.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Human.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Human.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,6 +77,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -115,7 +116,7 @@
       <workItem from="1707731700180" duration="3853000" />
       <workItem from="1707736974220" duration="2229000" />
       <workItem from="1707760954637" duration="1872000" />
-      <workItem from="1707823900387" duration="1120000" />
+      <workItem from="1707823900387" duration="6401000" />
     </task>
     <task id="LOCAL-00001" summary="Додав об'єкт факультета і ArrayManager для того, щоб користуватись масивами як HashMapами">
       <option name="closed" value="true" />
@@ -141,7 +142,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707741053230</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="додав батьківський клас Human і видалив зайве">
+      <option name="closed" value="true" />
+      <created>1707825041061</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1707825041061</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,7 +172,8 @@
     <MESSAGE value="Merge remote-tracking branch 'origin/master'" />
     <MESSAGE value="Додав об'єкт факультета і ArrayManager для того, щоб користуватись масивами як HashMapами" />
     <MESSAGE value="підредагував написане" />
-    <option name="LAST_COMMIT_MESSAGE" value="підредагував написане" />
+    <MESSAGE value="додав батьківський клас Human і видалив зайве" />
+    <option name="LAST_COMMIT_MESSAGE" value="додав батьківський клас Human і видалив зайве" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

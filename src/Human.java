@@ -1,19 +1,26 @@
-public class Human implements Comparable<Human>{
-    private String nsp;
+/**
+ * Represents a human being with a name, surname, and patronymic.
+ * Implements the Comparable interface for comparing humans based on their names.
+ */
+public class Human implements Comparable<Human> {
+
+    private String nsp; // Name, Surname, and Patronymic
+
     /**
-     * Порівнює цю людину з іншою людиною на основі імені.
+     * Compares this human with another human based on their names.
      *
-     * @param o Інша людина для порівняння.
-     * @return Значення < 0, якщо ця людина менше, = 0, якщо рівні, і > 0, якщо ця людина більше.
+     * @param o Another human to compare with.
+     * @return A negative value if this human is smaller, 0 if equal, and a positive value if this human is greater.
      */
     @Override
     public int compareTo(Human o) {
         return this.nsp.compareTo(o.nsp);
     }
+
+    //getters and setters
     public String getNsp() {
         return nsp;
     }
-
     public void setNsp(String nsp) {
         this.nsp = nsp;
     }
