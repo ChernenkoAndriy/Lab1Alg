@@ -1,4 +1,4 @@
-public class Main { ;
+public class Main {
     public static void main(String[] args) {
         while (true) {
             char act = DataInput.getChar("Введіть номер дії, яку хочете виконати:\n" +
