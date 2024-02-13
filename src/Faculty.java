@@ -5,10 +5,8 @@ import java.util.Objects;
  * The Faculty class represents a faculty in an educational institution.
  */
 public class Faculty {
-
-    private ArrayManager am = new ArrayManager(); // ArrayManager for array manipulation
-    private String name;
-    private String[] caf;
+    private static String name;
+    private static String[] caf;
 
     /**
      * Constructs a Faculty object with the specified name.
@@ -17,6 +15,7 @@ public class Faculty {
      */
     public Faculty(String name) {
         this.name = name;
+        this.caf = new String[0];
     }
 
     /**
@@ -61,30 +60,29 @@ public class Faculty {
      * @param cafedra The new cafedra to be added.
      */
     public void addCaf(String cafedra) {
-        am.addToAr(caf, cafedra);
+        caf = ArrayManager.addToAr(caf, cafedra);
     }
-
-    /**
-     * Overrides the equals method to compare Faculty objects for equality.
-     *
-     * @param o The object to compare with.
-     * @return True if the objects are equal, false otherwise.
-     */
+    public void deleteCaf(String cafedra){
+        for(int i =0; i< caf.length; i++){
+            if (cafedra.equals(caf[i])){
+            caf = ArrayManager.delFromArr(caf, i);
+            break;
+            }
+        }
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Faculty faculty)) return false;
-        return Objects.equals(name, faculty.name) && Arrays.equals(caf, faculty.caf);
+        return Objects.equals(getName(), faculty.getName()) && Arrays.equals(getCaf(), faculty.getCaf());
     }
 
-    /**
-     * Overrides the hashCode method to generate a hash code for Faculty objects.
-     *
-     * @return The hash code for the Faculty object.
-     */
     @Override
     public int hashCode() {
-        return Objects.hash(name);
+        int result = Objects.hash(getName());
+        result = 31 * result + Arrays.hashCode(getCaf());
+        return result;
     }
+
 }
 

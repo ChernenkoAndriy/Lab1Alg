@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef4ad7dd-768a-49f6-a18e-2cea82bf9295" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ArrayManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Faculty.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+    <list default="true" id="ef4ad7dd-768a-49f6-a18e-2cea82bf9295" name="Changes" comment="Додав об'єкт факультета і ArrayManager для того, щоб користуватись масивами як HashMapами">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ArrayManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ArrayManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Faculty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Faculty.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Student.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -106,8 +106,19 @@
       <workItem from="1707206654605" duration="40000" />
       <workItem from="1707207678762" duration="1625000" />
       <workItem from="1707209556575" duration="884000" />
-      <workItem from="1707211240781" duration="1981000" />
+      <workItem from="1707211240781" duration="2577000" />
+      <workItem from="1707731700180" duration="3853000" />
+      <workItem from="1707736974220" duration="213000" />
     </task>
+    <task id="LOCAL-00001" summary="Додав об'єкт факультета і ArrayManager для того, щоб користуватись масивами як HashMapами">
+      <option name="closed" value="true" />
+      <created>1707213641598</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1707213641598</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -124,15 +135,11 @@
       </map>
     </option>
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Додав клас вчитель(Teacher)" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/master'" />
+    <MESSAGE value="Додав об'єкт факультета і ArrayManager для того, щоб користуватись масивами як HashMapами" />
+    <option name="LAST_COMMIT_MESSAGE" value="Додав об'єкт факультета і ArrayManager для того, щоб користуватись масивами як HashMapами" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

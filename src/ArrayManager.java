@@ -1,55 +1,32 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
-/**
- * The ArrayManager class provides methods for manipulating arrays.
- */
+
 public class ArrayManager {
 
-    public ArrayManager() {
-    }
-
-    /**
-     * Adds an object to the end of the array.
-     *
-     * @param obj The original array.
-     * @param ob  The object to be added to the array.
-     */
-    public void addToAr(Object[] obj, Object ob) {
-        // Create a new array with increased size
-        Object[] arr = new Object[obj.length + 1];
-
-        // Copy elements from the original array to the new array
-        for (int i = 0; i < obj.length; i++) {
-            arr[i] = obj[i];
-        }
-
-        // Add the new object to the end of the array
+    public static  <T> T[] addToAr(T[] t, T ob) {
+        T[] arr = (T[]) new Object [t.length + 1];
+        System.arraycopy(t, 0, arr, 0, t.length);
         arr[arr.length - 1] = ob;
-
-        // Update the reference to the original array
-        obj = arr;
+        return arr;
     }
 
-    /**
-     * Deletes an element from the array based on its position.
-     *
-     * @param obj    The original array.
-     * @param place  The position of the element to be deleted.
-     */
-    public void delFromAr(Object[] obj, int place) {
-        // Create a new array with decreased size
-        Object[] arr = new Object[obj.length - 1];
 
-        // Copy elements from the original array to the new array, excluding the specified position
-        for (int i = 0, j = 0; i < obj.length; i++) {
-            if (i == place) {
-                continue; // Skip the element at the specified position
-            }
-            arr[j++] = obj[i];
+    public static <T> T[] delFromArr(T[] arr, int index) {
+        if (index < 0 || index >= arr.length) {
+            throw new IndexOutOfBoundsException("Index out of bounds");
         }
 
-        // Update the reference to the original array
-        obj = arr;
+        // Create a new array with one less element
+        T[] result = (T[]) new Object[arr.length - 1];
+
+        // Copy elements before the specified index
+        System.arraycopy(arr, 0, result, 0, index);
+
+        // Copy elements after the specified index
+        System.arraycopy(arr, index + 1, result, index, arr.length - index - 1);
+
+        return result;
     }
 }
 

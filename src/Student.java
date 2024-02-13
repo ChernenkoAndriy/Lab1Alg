@@ -37,9 +37,8 @@ public class Student {
         this.course = course;
         this.faculty = faculty;
         this.department = department;
+
     }
-
-
     /**
      * Повернути ПІБ студента
      *
