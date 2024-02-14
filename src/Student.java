@@ -1,198 +1,66 @@
-/*
- *Автор: Максим Семенюк
- *Опис класу: Клас, що представляє учня в університеті.
+/**
+ * Represents a student, extending the Human class, with additional attributes such as course and group.
  */
+public class Student extends Human {
 
-import java.util.StringTokenizer;
-
-public class Student {
-    // Поля класу
-    private String fullName;   // ПІБ студента
-    private int group;       // Група студента
-    private int course;         // Курс студента
-    private String faculty;     // Факультет студента
-    private String department;  // Кафедра студента
+    private String nsp;   // Name, Surname, and Patronymic
+    private int course;    // The academic year/course of the student
+    private Group group;   // The academic group to which the student belongs
 
     /**
-     * Пустий конструктор
-     */
-    public Student() {
-
-    }
-
-
-    /**
-     * Конструктор класу Student
+     * Constructs a new Student with the specified name, course, and group.
      *
-     * @param fullName   Прізвище,ім'я,по батькові
-     * @param group      Група
-     * @param course     Курс
-     * @param specialty  Спеціальність
-     * @param faculty    Факультет
-     * @param department Кафедра
+     * @param nsp    The name, surname, and patronymic of the student.
+     * @param course The academic year/course of the student.
+     * @param group  The academic group to which the student belongs.
      */
-    public Student(String fullName, int group, int course, String specialty, String faculty, String department) {
-        this.fullName = fullName;
-        this.group = group;
+    public Student(String nsp, int course, Group group) {
+        this.nsp = nsp;
         this.course = course;
-        this.faculty = faculty;
-        this.department = department;
-
-    }
-    /**
-     * Повернути ПІБ студента
-     *
-     * @return повертає ПІБ студента
-     */
-    public String getFullName() {
-        return fullName;
-    }
-
-    /**
-     * Встановити новий ПІБ студента
-     *
-     * @param fullName Новий ПІБ студента
-     */
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    /**
-     * Повернути номер групи
-     *
-     * @return Номер групи
-     */
-    public int getGroup() {
-        return group;
-    }
-
-    /**
-     * Встановити новий номер групи
-     *
-     * @param group Новий номер групи
-     */
-    public void setGroup(int group) {
         this.group = group;
     }
-
     /**
-     * Повернути номер курсу
+     * Compares the course of this student with another student.
      *
-     * @return Номер курсу
+     * @param o Another student to compare courses with.
+     * @return 0 if courses are equal, -1 if this student's course is less, 1 if this student's course is greater.
      */
-    public int getCourse() {
-        return course;
+    public int compareCourse(Student o) {
+        if (this.course == o.course) return 0;
+        if (this.course < o.course) return -1;
+        return 1;
     }
-
     /**
-     * Встановити новий номер курсу
+     * Compares this student with another student based on their names.
      *
-     * @param course Новий номер курсу
+     * @param o Another student to compare with.
+     * @return A negative value if this student is smaller, 0 if equal, and a positive value if this student is greater.
      */
-    public void setCourse(int course) {
-        this.course = course;
+    public int compareTo(Student o) {
+        return super.compareTo(o);
     }
-
     /**
-     * Повернути назву факультету
+     * Returns a string representation of the student, including name, course, group, Cathedra, and Faculty.
      *
-     * @return Назва факультету
-     */
-    public String getFaculty() {
-        return faculty;
-    }
-
-    /**
-     * Встановити нову назву факультету
-     *
-     * @param faculty Нова назва факультету
-     */
-    public void setFaculty(String faculty) {
-        this.faculty = faculty;
-    }
-
-    /**
-     * Повернути назву кафедри
-     *
-     * @return Назва кафедри
-     */
-    public String getDepartment() {
-        return department;
-    }
-
-    /**
-     * Встановити нову назву кафедри
-     *
-     * @param department Нова назва кафедри
-     */
-    public void setDepartment(String department) {
-        this.department = department;
-    }
-
-    /**
-     * Встановити всю інформацію про студента зі стрічки з файлу
-     *
-     * @param s Інформація про певного студента
-     */
-    public void setStudentFullInfo(String s) {
-        StringTokenizer tk = new StringTokenizer(s);
-        for (int i = 1; tk.hasMoreElements(); i++) {
-            switch (i) {
-                case 1:
-                    this.fullName = tk.nextToken();
-                    break;
-                case 2:
-
-                    this.group = Integer.parseInt(tk.nextToken());
-                    ;
-                    break;
-                case 3:
-                    this.course = Integer.parseInt(tk.nextToken());
-                    ;
-                    break;
-                case 4:
-                    this.faculty = tk.nextToken();
-                    break;
-                default:
-                    this.department = tk.nextToken();
-
-            }
-        }
-    }
-
-    /**
-     * Повертає стрічку з повною інформацією про студента перед записом в файл
-     *
-     * @return Повна інформація про студента
-     */
-    public String getStudentFullInfo() {
-        return fullName + " " + group + " " + course + " " + faculty + " " + department;
-    }
-
-    /**
-     * Повертає повну інформацію про студента у вигляді стрічки
-     *
-     * @return Стрічка з повною інформацією про студента
+     * @return String representation of the student.
      */
     @Override
     public String toString() {
-        return "Студент: " +
-                "ПІБ: " + fullName +
-                ", група: " + group +
-                ", курс: " + course +
-                ", факультет: " + faculty +
-                ", кафедра: " + department + ";";
+        return "Name: " + this.nsp + "  Course: " + this.course + "  Group: " +
+                this.group + "  Cathedra: " + this.group.getCathedra().getCathName() +
+                "  Faculty: " + this.group.getCathedra().getFaculty().getFacName();
+    }
+    //getters and setters
+    public int getCourse() {
+        return course;
+    }
+    public void setCourse(int course) {
+        this.course = course;
+    }
+    public Group getGroup() {
+        return group;
+    }
+    public void setGroup(Group group) {
+        this.group = group;
     }
 }
-/* Тестовий клас для перевірки класу Student
-class Test{
-    public static void main(String[] args) {
-            String s="Petro 2 4 IPZ FI Dep";
-            Student st=new Student();
-            st.setStudentFullInfo(s);
-        System.out.println(st);
-        s=st.getStudentFullInfo();
-        System.out.println(s);
-    }
-}*/
-

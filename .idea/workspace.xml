@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef4ad7dd-768a-49f6-a18e-2cea82bf9295" name="Changes" comment="Додав об'єкт факультета і ArrayManager для того, щоб користуватись масивами як HashMapами">
+    <list default="true" id="ef4ad7dd-768a-49f6-a18e-2cea82bf9295" name="Changes" comment="додав батьківський клас Human і видалив зайве">
+      <change afterPath="$PROJECT_DIR$/src/Cathedra.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Faculty.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Group.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Student.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Teacher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ArrayManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ArrayManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataInput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Faculty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Faculty.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Human.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Human.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +77,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -108,7 +114,9 @@
       <workItem from="1707209556575" duration="884000" />
       <workItem from="1707211240781" duration="2577000" />
       <workItem from="1707731700180" duration="3853000" />
-      <workItem from="1707736974220" duration="213000" />
+      <workItem from="1707736974220" duration="2229000" />
+      <workItem from="1707760954637" duration="1872000" />
+      <workItem from="1707823900387" duration="6401000" />
     </task>
     <task id="LOCAL-00001" summary="Додав об'єкт факультета і ArrayManager для того, щоб користуватись масивами як HashMapами">
       <option name="closed" value="true" />
@@ -118,7 +126,31 @@
       <option name="project" value="LOCAL" />
       <updated>1707213641598</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="підредагував написане">
+      <option name="closed" value="true" />
+      <created>1707741028518</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1707741028518</updated>
+    </task>
+    <task id="LOCAL-00003" summary="підредагував написане">
+      <option name="closed" value="true" />
+      <created>1707741053230</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1707741053230</updated>
+    </task>
+    <task id="LOCAL-00004" summary="додав батьківський клас Human і видалив зайве">
+      <option name="closed" value="true" />
+      <created>1707825041061</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1707825041061</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -139,7 +171,9 @@
     <MESSAGE value="Додав клас вчитель(Teacher)" />
     <MESSAGE value="Merge remote-tracking branch 'origin/master'" />
     <MESSAGE value="Додав об'єкт факультета і ArrayManager для того, щоб користуватись масивами як HashMapами" />
-    <option name="LAST_COMMIT_MESSAGE" value="Додав об'єкт факультета і ArrayManager для того, щоб користуватись масивами як HashMapами" />
+    <MESSAGE value="підредагував написане" />
+    <MESSAGE value="додав батьківський клас Human і видалив зайве" />
+    <option name="LAST_COMMIT_MESSAGE" value="додав батьківський клас Human і видалив зайве" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
