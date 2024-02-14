@@ -2,6 +2,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 public class DataInput {
+    public DataInput() {
+    }
+
 // це клас для зчитування інформції
     /**
      * приклад використання:
