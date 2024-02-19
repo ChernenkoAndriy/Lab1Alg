@@ -1,7 +1,9 @@
+import java.io.Serializable;
+
 /**
  * Represents a student, extending the Human class, with additional attributes such as course and group.
  */
-public class Student extends Human {
+public class Student extends Human{
 
     private String nsp;   // Name, Surname, and Patronymic
     private int course;    // The academic year/course of the student
@@ -63,4 +65,6 @@ public class Student extends Human {
     public void setGroup(Group group) {
         this.group = group;
     }
+
+
 }

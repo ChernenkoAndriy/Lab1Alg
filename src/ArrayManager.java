@@ -1,7 +1,3 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-
-
 public class ArrayManager {
 
     public static  <T> T[] addToAr(T[] t, T ob) {
@@ -27,6 +23,13 @@ public class ArrayManager {
         System.arraycopy(arr, index + 1, result, index, arr.length - index - 1);
 
         return result;
+    }
+    public static <T> T getfromArray(T[] t, int i){
+        return t[i];
+    }
+    public static <T> T[] setElArray(T[] t, int i,T t1){
+        t[i] = t1;
+        return  t;
     }
 }
 

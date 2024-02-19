@@ -1,8 +1,11 @@
+import java.io.Serializable;
+import java.util.StringTokenizer;
+
 /**
  * Represents a group of students within a university, identified by a group number,
  * a group name, and associated with a specific Cathedra (academic department).
  */
-public class Group {
+public class Group{
 
     private int groupNum; // The unique identifier for the group
     private String groupName; // The name of the group
@@ -43,5 +46,6 @@ public class Group {
     public void setGroupName(String groupName) {
         this.groupName = groupName;
     }
+
 }
 

@@ -1,7 +1,10 @@
+import java.io.Serializable;
+import java.util.StringTokenizer;
+
 /**
  * Represents an academic department (Cathedra) within a university, identified by its name and associated with a Faculty.
  */
-public class Cathedra {
+public class Cathedra{
 
     private String cathName; // The name of the Cathedra
     private Faculty faculty; // The Faculty to which the Cathedra is affiliated
@@ -29,5 +32,6 @@ public class Cathedra {
     public void setFaculty(Faculty faculty) {
         this.faculty = faculty;
     }
+
 }
 

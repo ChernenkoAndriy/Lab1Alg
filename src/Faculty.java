@@ -1,7 +1,9 @@
+import java.io.Serializable;
+
 /**
  * Represents a faculty within a university, identified by its name.
  */
-public class Faculty {
+public class Faculty{
 
     private String facName; // The name of the faculty
 
@@ -20,4 +22,6 @@ public class Faculty {
     public void setFacName(String facName) {
         this.facName = facName;
     }
+
+
 }

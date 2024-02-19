@@ -13,16 +13,13 @@ public class Main {
 
             switch (act) {
                 case '1':
-                    EditMenu em = new EditMenu();
-                    em.run();
+                    EditMenu.run();
                     break;
                 case '2':
-                    AddMenu am = new AddMenu();
-                    am.run();
+                    AddMenu.run();
                     break;
                 case '3':
-                    StatMenu sm = new StatMenu();
-                    sm.run();
+                    StatMenu.run();
                     break;
                 case 'b':
                     System.out.println("Дякую за використання нашої програми.");
