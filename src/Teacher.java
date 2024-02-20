@@ -4,7 +4,7 @@ import java.io.Serializable;
  * Represents a teacher, extending the Human class, with additional attributes such as name, surname, patronymic,
  * and affiliated Cathedra.
  */
-public class Teacher extends Human{
+public class Teacher extends Human implements Comparable<Human>{
 
     private String nsp;       // Name, Surname, and Patronymic
     private Cathedra cathedra; // The academic department (Cathedra) to which the teacher is affiliated

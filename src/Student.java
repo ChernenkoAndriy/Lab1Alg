@@ -1,4 +1,5 @@
-import java.io.Serializable;
+import java.util.Collection;
+import java.util.logging.Filter;
 
 /**
  * Represents a student, extending the Human class, with additional attributes such as course and group.
@@ -27,7 +28,7 @@ public class Student extends Human{
      * @param o Another student to compare courses with.
      * @return 0 if courses are equal, -1 if this student's course is less, 1 if this student's course is greater.
      */
-    public int compareCourse(Student o) {
+    public int compareByCourse(Student o) {
         if (this.course == o.course) return 0;
         if (this.course < o.course) return -1;
         return 1;
@@ -65,6 +66,4 @@ public class Student extends Human{
     public void setGroup(Group group) {
         this.group = group;
     }
-
-
 }

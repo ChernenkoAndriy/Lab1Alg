@@ -5,6 +5,7 @@ public class DataBase {
     private Faculty[] faculties;
     private Cathedra[] cathedras;
     private Group[] groups;
+
     private static DataBase instance;
     private DataBase() {
         students = new Student[0];

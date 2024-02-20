@@ -1,13 +1,35 @@
+/**
+ * The ArrayManager class provides utility methods for managing arrays in Java.
+ * It includes methods for adding elements, deleting elements, retrieving elements,
+ * updating elements, and checking if an element is present in the array.
+ *
+ */
 public class ArrayManager {
 
-    public static  <T> T[] addToAr(T[] t, T ob) {
+    /**
+     * Adds a new element to the end of the array.
+     *
+     * @param t  The original array.
+     * @param ob The element to be added.
+     * @param <T> The type of elements in the array.
+     * @return A new array with the added element.
+     */
+    public static <T> T[] addToAr(T[] t, T ob) {
         T[] arr = (T[]) new Object [t.length + 1];
         System.arraycopy(t, 0, arr, 0, t.length);
         arr[arr.length - 1] = ob;
         return arr;
     }
 
-
+    /**
+     * Deletes an element from the array at the specified index.
+     *
+     * @param arr   The original array.
+     * @param index The index of the element to be deleted.
+     * @param <T>   The type of elements in the array.
+     * @return A new array with the specified element removed.
+     * @throws IndexOutOfBoundsException if the index is out of bounds.
+     */
     public static <T> T[] delFromArr(T[] arr, int index) {
         if (index < 0 || index >= arr.length) {
             throw new IndexOutOfBoundsException("Index out of bounds");
@@ -24,12 +46,47 @@ public class ArrayManager {
 
         return result;
     }
+
+    /**
+     * Retrieves an element from the array at the specified index.
+     *
+     * @param t   The array.
+     * @param i   The index of the element to be retrieved.
+     * @param <T> The type of elements in the array.
+     * @return The element at the specified index.
+     */
     public static <T> T getfromArray(T[] t, int i){
         return t[i];
     }
-    public static <T> T[] setElArray(T[] t, int i,T t1){
+
+    /**
+     * Updates an element in the array at the specified index.
+     *
+     * @param t   The original array.
+     * @param i   The index of the element to be updated.
+     * @param t1  The new value for the element.
+     * @param <T> The type of elements in the array.
+     * @return The array with the specified element updated.
+     */
+    public static <T> T[] setElArray(T[] t, int i, T t1){
         t[i] = t1;
         return  t;
     }
+
+    /**
+     * Checks if the array contains a specific element.
+     *
+     * @param t The array to be checked.
+     * @param k The element to be checked for existence.
+     * @param <T> The type of elements in the array.
+     * @return true if the element is present, false otherwise.
+     */
+    public static <T> boolean ifContains(T[] t, T k){
+        for(T j : t){
+            if(k.equals(j)) return true;
+        }
+        return false;
+    }
 }
+
 
