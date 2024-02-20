@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef4ad7dd-768a-49f6-a18e-2cea82bf9295" name="Changes" comment="added database">
+    <list default="true" id="ef4ad7dd-768a-49f6-a18e-2cea82bf9295" name="Changes" comment="corrected a little bit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ArrayManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ArrayManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Teacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Teacher.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +125,9 @@
       <workItem from="1708361848431" duration="16000" />
       <workItem from="1708416791953" duration="82000" />
       <workItem from="1708423475504" duration="735000" />
-      <workItem from="1708424494077" duration="773000" />
+      <workItem from="1708424494077" duration="1780000" />
+      <workItem from="1708426308134" duration="10000" />
+      <workItem from="1708428258187" duration="1021000" />
     </task>
     <task id="LOCAL-00001" summary="Додав об'єкт факультета і ArrayManager для того, щоб користуватись масивами як HashMapами">
       <option name="closed" value="true" />
@@ -186,7 +185,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708416864326</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="corrected a little bit">
+      <option name="closed" value="true" />
+      <created>1708425710827</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1708425710827</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,7 +218,8 @@
     <MESSAGE value="Added classes Teacher and Student. Added Cathedra, &#10;Group, Faculty, that describe it and will be used later" />
     <MESSAGE value="Merge remote-tracking branch 'origin/master'" />
     <MESSAGE value="added database" />
-    <option name="LAST_COMMIT_MESSAGE" value="added database" />
+    <MESSAGE value="corrected a little bit" />
+    <option name="LAST_COMMIT_MESSAGE" value="corrected a little bit" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
