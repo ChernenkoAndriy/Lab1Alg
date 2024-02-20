@@ -5,7 +5,12 @@ public class DataBase {
     private Faculty[] faculties;
     private Cathedra[] cathedras;
     private Group[] groups;
-
+    public static DataBase getInstance() {
+        if (instance == null) {
+            instance = new DataBase();
+        }
+        return instance;
+    }
     private static DataBase instance;
     private DataBase() {
         students = new Student[0];
@@ -14,7 +19,6 @@ public class DataBase {
         cathedras = new Cathedra[0];
         groups = new Group[0];
     }
-
     public Student[] getStudents() {
         return students;
     }
