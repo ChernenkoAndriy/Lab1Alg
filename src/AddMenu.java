@@ -81,7 +81,7 @@ public class AddMenu {
             System.out.println("Кафедру з назвою " + cathedraName + " не знайдено.");
             return;
         }
-        // Знайти групу за назвою
+        // Пошук групи за назвою
         Group[] groups = DataBase.getInstance().getGroups();
         Group group = null;
         for (Group g : groups) {

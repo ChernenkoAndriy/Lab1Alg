@@ -40,7 +40,7 @@ public class Teacher extends Human implements Comparable<Human>{
     // Конструктор з одним аргументом - ім'ям
     public Teacher(String name) {
         super();
-        this.setNsp(name + "  " + " " + " "); // Прізвище та по батькові залишаємо пустими
+        this.setNsp(name + "  " + " " + " ");
     }
 }
 
