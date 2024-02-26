@@ -32,5 +32,15 @@ public class Teacher extends Human implements Comparable<Human>{
     public void setNsp(String nsp) {
         super.setNsp(nsp);
     }
+    // Конструктор з трьома аргументами
+    public Teacher(String name, String surname, String patronymic) {
+        super();
+        this.setNsp(name + " " + surname + " " + patronymic);
+    }
+    // Конструктор з одним аргументом - ім'ям
+    public Teacher(String name) {
+        super();
+        this.setNsp(name + "  " + " " + " "); // Прізвище та по батькові залишаємо пустими
+    }
 }
 
