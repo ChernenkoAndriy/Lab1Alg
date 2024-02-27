@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.StringTokenizer;
 
 /**
@@ -47,5 +48,16 @@ public class Group{
         this.groupName = groupName;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Group group)) return false;
+        return getGroupNum() == group.getGroupNum() && Objects.equals(getGroupName(), group.getGroupName()) && Objects.equals(getCathedra(), group.getCathedra());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getGroupNum(), getGroupName(), getCathedra());
+    }
 }
 

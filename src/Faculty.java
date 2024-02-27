@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * Represents a faculty within a university, identified by its name.
@@ -24,4 +25,15 @@ public class Faculty{
     }
 
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Faculty faculty)) return false;
+        return Objects.equals(getFacName(), faculty.getFacName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getFacName());
+    }
 }
