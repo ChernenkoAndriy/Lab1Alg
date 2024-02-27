@@ -58,7 +58,7 @@ public class StatMenu {
                         if(teachers.length!=0){
                             System.out.println(Arrays.toString(humanByNames(teachers)));
                         }else{
-                            System.out.println("Немає студентів на факультеті");
+                            System.out.println("Немає викладачів на факультеті");
                         }
                     } else {
                         System.out.println("Немає такого факультета");
@@ -82,7 +82,6 @@ public class StatMenu {
                     } else {
                         System.out.println("Немає такої");
                     }
-
                     // виведення всіх студентів кафедри впорядкованих за курсами
                     break;
                 case 5:
@@ -90,10 +89,10 @@ public class StatMenu {
                     faculty = DataInput.getString("Введіть назву факультета, до якого належить кафедра");
                     cath = new Cathedra(cathedraName, new Faculty(faculty));
                     if (ArrayManager.ifContains(DataBase.getInstance().getCathedras(), cath)) {
-                        Student[] array = new Student[0];
-                        for (Student student : DataBase.getInstance().getStudents()) {
-                            if (student.getGroup().getCathedra().equals(cath))
-                               array = ArrayManager.addToAr(array, student);
+                        Teacher[] array = new  Teacher[0];
+                        for ( Teacher teacher : DataBase.getInstance().getTeachers()) {
+                            if (teacher.getCathedra().equals(cath))
+                               array = ArrayManager.addToAr(array, teacher);
                         }
                         if (array.length != 0) {
                             System.out.println(Arrays.toString(humanByNames(array)));
@@ -126,20 +125,89 @@ public class StatMenu {
                     // виведення всіх викладачів кафедри впорядкованих за алфавітом
                     break;
                 case 7:
-                    
+                    cathedraName = DataInput.getString("Ввеліть назву кафедри, яку шукаємо");
+                    faculty = DataInput.getString("Введіть назву факультета, до якого належить кафедра");
+                    int course = DataInput.getInt("Введіть курс");
+                    cath = new Cathedra(cathedraName, new Faculty(faculty));
+                    if (ArrayManager.ifContains(DataBase.getInstance().getCathedras(), cath)) {
+                        Student[] array = new Student[0];
+                        for (Student stud : DataBase.getInstance().getStudents()) {
+                            if (stud.getGroup().getCathedra().equals(cath)&& stud.getCourse()==course)
+                                array = ArrayManager.addToAr(array, stud);
+                        }
+                        if (array.length != 0) {
+                            System.out.println(Arrays.toString(array));
+                        } else {
+                            System.out.println("Немає студентів такого курсу на такій кафедрі");
+                        }
+                    } else {
+                        System.out.println("Немає такої");
+                    }
                     // виведення всіх студентів кафедри вказаного курсу
                     break;
                 case 8:
+                    cathedraName = DataInput.getString("Ввеліть назву кафедри, яку шукаємо");
+                    faculty = DataInput.getString("Введіть назву факультета, до якого належить кафедра");
+                     course = DataInput.getInt("Введіть курс");
+                    cath = new Cathedra(cathedraName, new Faculty(faculty));
+                    if (ArrayManager.ifContains(DataBase.getInstance().getCathedras(), cath)) {
+                        Student[] array = new Student[0];
+                        for (Student stud : DataBase.getInstance().getStudents()) {
+                            if (stud.getGroup().getCathedra().equals(cath)&& stud.getCourse()==course)
+                                array = ArrayManager.addToAr(array, stud);
+                        }
+                        if (array.length != 0) {
+                            System.out.println(Arrays.toString(humanByNames(array)));
+                        } else {
+                            System.out.println("Немає студентів");
+                        }
+                    } else {
+                        System.out.println("Немає такої");
+                    }
                     // виведення всіх студентів кафедри вказаного курсу впорядкованих за алфавітом
                     break;
                 case 9:
-                    // виведення всіх студентів кафедри вказаного курсу впорядкованих за алфавітом
+                   String nsp = DataInput.getString("Введіть ПІБ");
+                    int counter = 0;
+                   for (Student student : DataBase.getInstance().getStudents()) {
+                       if (student.getNsp().equals(nsp)) {
+                           System.out.println(student);
+                           ++counter;
+                       }
+                   }
+                   if(counter==0)System.out.println("Немає студентів з таким прізвищем");
                     break;
                 case 10:
-                    // виведення всіх студентів кафедри вказаного курсу впорядкованих за алфавітом
+                    nsp = DataInput.getString("Введіть ПІБ");
+                    counter = 0;
+                    for (Teacher teacher : DataBase.getInstance().getTeachers()) {
+                        if (teacher.getNsp().equals(nsp)) {
+                            System.out.println(teacher);
+                            ++counter;
+                        }
+                    }
+                    if(counter==0)System.out.println("Немає викладачів з таким прізвищем");
                     break;
                 case 11:
-                    // виведення всіх студентів кафедри вказаного курсу впорядкованих за алфавітом
+                   String groupName = DataInput.getString("Введіть назву спеціальності");
+                   int groupNum = DataInput.getInt("Введіть її номер");
+                   String cathname = DataInput.getString("Введіть назву кафедри, до якої належить спеціальність");
+                   String facName = DataInput.getString("Введіть назву факультета");
+                   Group group = new Group(groupNum, groupName, new Cathedra(cathname, new Faculty(facName)));
+                   if (ArrayManager.ifContains(DataBase.getInstance().getGroups(), group)) {
+                       Student[] array = new Student[0];
+                       for (Student stud : DataBase.getInstance().getStudents()) {
+                           if (stud.getGroup().equals(group))
+                               array = ArrayManager.addToAr(array, stud);
+                       }
+                       if(array.length!=0){
+                           System.out.println(Arrays.toString(array));
+                       }else{
+                           System.out.println("Немає студентів на групі");
+                       }
+                   }else{
+                       System.out.println("Немає такої групи");
+                   }
                     break;
                 case 'b':
                     return;
@@ -151,7 +219,7 @@ public class StatMenu {
 
     private static Student[] studentsBycourses(Student[] students) {
         for (int i = 0; i < students.length; i++) {
-            if (students[i].compareTo(students[i]) == -1) {
+            if (students[i].compareByCourse(students[i+1]) == -1) {
                 Student a = students[i];
                 students[i] = students[i + 1];
                 students[i + 1] = a;
