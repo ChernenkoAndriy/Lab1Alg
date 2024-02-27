@@ -5,13 +5,16 @@ public class DataBase {
     private Faculty[] faculties;
     private Cathedra[] cathedras;
     private Group[] groups;
+
     public static DataBase getInstance() {
         if (instance == null) {
             instance = new DataBase();
         }
         return instance;
     }
+
     private static DataBase instance;
+
     private DataBase() {
         students = new Student[0];
         teachers = new Teacher[0];
@@ -19,27 +22,6 @@ public class DataBase {
         cathedras = new Cathedra[0];
         groups = new Group[0];
     }
-
-    public void setStudents(Student[] students) {
-        this.students = students;
-    }
-
-    public void setTeachers(Teacher[] teachers) {
-        this.teachers = teachers;
-    }
-
-    public void setFaculties(Faculty[] faculties) {
-        this.faculties = faculties;
-    }
-
-    public void setCathedras(Cathedra[] cathedras) {
-        this.cathedras = cathedras;
-    }
-
-    public void setGroups(Group[] groups) {
-        this.groups = groups;
-    }
-
     public Student[] getStudents() {
         return students;
     }
