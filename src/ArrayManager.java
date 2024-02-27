@@ -1,3 +1,5 @@
+import java.lang.reflect.Array;
+
 /**
  * The ArrayManager class provides utility methods for managing arrays in Java.
  * It includes methods for adding elements, deleting elements, retrieving elements,
@@ -36,7 +38,8 @@ public class ArrayManager {
         }
 
         // Create a new array with one less element
-        T[] result = (T[]) new Object[arr.length - 1];
+        @SuppressWarnings("unchecked")
+        T[] result = (T[]) Array.newInstance(arr.getClass().getComponentType(), arr.length - 1);
 
         // Copy elements before the specified index
         System.arraycopy(arr, 0, result, 0, index);

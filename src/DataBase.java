@@ -19,6 +19,27 @@ public class DataBase {
         cathedras = new Cathedra[0];
         groups = new Group[0];
     }
+
+    public void setStudents(Student[] students) {
+        this.students = students;
+    }
+
+    public void setTeachers(Teacher[] teachers) {
+        this.teachers = teachers;
+    }
+
+    public void setFaculties(Faculty[] faculties) {
+        this.faculties = faculties;
+    }
+
+    public void setCathedras(Cathedra[] cathedras) {
+        this.cathedras = cathedras;
+    }
+
+    public void setGroups(Group[] groups) {
+        this.groups = groups;
+    }
+
     public Student[] getStudents() {
         return students;
     }
