@@ -45,150 +45,85 @@ public class AddMenu {
     private static void addFaculty() {
         String facultyName = DataInput.getString("Введіть назву факультету:");
         Faculty faculty = new Faculty(facultyName);
-        DataBase.getInstance().addFaculty(faculty);
+        DataBase.getInstance().setFaculties(ArrayManager.addToAr(DataBase.getInstance().getFaculties(), faculty));
         System.out.println("Факультет успішно додано: " + facultyName);
     }
 
     private static void addCathedraToFaculty() {
-        String cathedraName = DataInput.getString("Введіть назву кафедри:");
-        String facultyName = DataInput.getString("Введіть назву факультету, до якого додається кафедра:");
-        Faculty[] faculties = DataBase.getInstance().getFaculties();
-        Faculty faculty = null;
-        for (Faculty f : faculties) {
-            if (f.getFacName().equals(facultyName)) {
-                faculty = f;
-                break;
-            }
+        if (DataBase.getInstance().getFaculties().length !=0) {
+            String cathedraName = DataInput.getString("Введіть назву кафедри:");
+            String facultyName = DataInput.getString("Введіть назву факультету, до якого додається кафедра:");
+            while (!ArrayManager.ifContains(DataBase.getInstance().getFaculties(), new Faculty(facultyName)))
+                facultyName = DataInput.getString("Немає такого факультета:");
+           DataBase.getInstance().setCathedras(
+                   ArrayManager.addToAr(
+                           DataBase.getInstance().getCathedras(),
+                           new Cathedra(cathedraName, new Faculty(facultyName))));
+
+        }else {
+            System.out.println("Немає факультетів ще");
         }
-        if (faculty == null) {
-            System.out.println("Факультет з назвою " + facultyName + " не знайдено.");
-            return;
-        }
-        Cathedra cathedra = new Cathedra(cathedraName, faculty);
-        DataBase.getInstance().addCathedra(cathedra);
-        System.out.println("Кафедру успішно додано до факультету: " + cathedraName + " -> " + facultyName);
     }
 
     private static void addStudentToCathedra() {
-        String studentName = DataInput.getString("Введіть ПІБ студента:");
-        int course = DataInput.getInt("Введіть курс студента:");
-        String groupName = DataInput.getString("Введіть назву групи студента:");
-        String cathedraName = DataInput.getString("Введіть назву кафедри, до якої додається студент:");
-
-        Cathedra[] cathedras = DataBase.getInstance().getCathedras();
-        Cathedra cathedra = null;
-        for (Cathedra c : cathedras) {
-            if (c.getCathName().equals(cathedraName)) {
-                cathedra = c;
-                break;
-            }
-        }
-
-        if (cathedra == null) {
-            System.out.println("Кафедру з назвою " + cathedraName + " не знайдено.");
-            System.out.println("Наявні кафедри:");
-
-            for (Cathedra c : cathedras) {
-                System.out.println("- " + c.getCathName());
-            }
-
-            char addCathedraChoice = DataInput.getChar("Чи бажаєте додати нову кафедру? (y/n): ");
-            if (addCathedraChoice == 'y') {
-                String newCathedraName = DataInput.getString("Введіть назву нової кафедри:");
-                String facultyName = DataInput.getString("Введіть назву факультету, до якого додається кафедра:");
-
-                Faculty[] faculties = DataBase.getInstance().getFaculties();
-                Faculty faculty = null;
-                for (Faculty f : faculties) {
-                    if (f.getFacName().equals(facultyName)) {
-                        faculty = f;
-                        break;
-                    }
-                }
-                if (faculty == null) {
-                    System.out.println("Факультет з назвою " + facultyName + " не знайдено.");
-                    return;
-                }
-                Cathedra newCathedra = new Cathedra(newCathedraName, faculty);
-                DataBase.getInstance().addCathedra(newCathedra);
-                System.out.println("Нову кафедру успішно додано: " + newCathedraName);
-                cathedra = newCathedra;
-            } else {
-                return;
-            }
-        }
-
-        Group[] groups = DataBase.getInstance().getGroups();
-        Group group = null;
-        for (Group g : groups) {
-            if (g.getGroupName().equals(groupName) && g.getCathedra().equals(cathedra)) {
-                group = g;
-                break;
-            }
-        }
-
-        if (group == null) {
-            System.out.println("Групу з назвою " + groupName + " не знайдено для кафедри " + cathedraName);
-
-            char addNewGroupChoice = DataInput.getChar("Бажаєте додати нову групу? (Так - 'y', Ні - 'n'): ");
-            if (addNewGroupChoice == 'y') {
-                String newGroupName = DataInput.getString("Введіть назву нової групи:");
-                Group newGroup = new Group(newGroupName, cathedra);
-                DataBase.getInstance().addGroup(newGroup);
-                System.out.println("Нову групу успішно додано: " + newGroupName);
-                group = newGroup;
-            } else {
-                return;
-            }
-        }
-
-        Student student = new Student(studentName, course, group);
-        DataBase.getInstance().addStudent(student);
-        System.out.println("Студента успішно додано до кафедри: " + studentName + " -> " + cathedraName);
+       if(DataBase.getInstance().getGroups().length!=0){
+           String nsp = DataInput.getString("Введіть ПІБ студента");
+           int course = DataInput.getInt("Введіть курс");
+           while (course<=0 || course>5)
+               course = DataInput.getInt("Курс має бути від 1 до 5");
+           int groupNum = DataInput.getInt("Введіть номер групи, на яку записуємо");
+           String groupName = DataInput.getString("Введіть ім'я групи");
+           String cathedra = DataInput.getString("Введіть кафедру на якій група");
+           String faculty = DataInput.getString("Введіть факультет, на якому кафедра");
+           while(!ArrayManager.ifContains(DataBase.getInstance().getGroups(),
+                   new Group(groupNum, groupName, new Cathedra(cathedra, new Faculty(faculty))))){
+               System.out.println("Щось неправильно введено");
+               groupNum = DataInput.getInt("Введіть номер групи, на яку записуємо");
+               groupName = DataInput.getString("Введіть ім'я групи");
+               cathedra = DataInput.getString("Введіть кафедру на якій група");
+               faculty = DataInput.getString("Введіть факультет, на якому кафедра");
+           }
+           DataBase.getInstance().setStudents(ArrayManager.addToAr(DataBase.getInstance().getStudents(),
+                   new Student(nsp, course, new Group(groupNum, groupName, new Cathedra(cathedra, new Faculty(faculty))))));
+       }else {
+           System.out.println("Немає ще спеціальностей для запису ");
+       }
     }
 
     private static void addTeacherToCathedra() {
-        String teacherName = DataInput.getString("Введіть ПІБ викладача:");
-        String cathedraName = DataInput.getString("Введіть назву кафедри, до якої додається викладач:");
-        Cathedra[] cathedras = DataBase.getInstance().getCathedras();
-        Cathedra cathedra = null;
-        for (Cathedra c : cathedras) {
-            if (c.getCathName().equals(cathedraName)) {
-                cathedra = c;
-                break;
+        if(DataBase.getInstance().getCathedras().length!=0){
+            String nsp = DataInput.getString("Введіть ПІБ викладача");
+            String cathedra = DataInput.getString("Введіть кафедру на яку запишемо викладача");
+            String faculty = DataInput.getString("Введіть факультет, на якому кафедра");
+            while(!ArrayManager.ifContains(DataBase.getInstance().getCathedras(),
+                    new Cathedra(cathedra, new Faculty(faculty)))) {
+                System.out.println("Щось неправильно введено");
+                cathedra = DataInput.getString("Введіть кафедру на яку запишемо викладача");
+                faculty = DataInput.getString("Введіть факультет, на якому кафедра");
             }
+            DataBase.getInstance().setTeachers(ArrayManager.addToAr(DataBase.getInstance().getTeachers(), new Teacher(nsp,
+                    new Cathedra(cathedra, new Faculty(faculty)))));
+        }else {
+            System.out.println("Немає ще кафедр для запису");
         }
-        if (cathedra == null) {
-            System.out.println("Кафедру з назвою " + cathedraName + " не знайдено.");
-            return;
-        }
-        Teacher teacher = new Teacher(teacherName);
-        teacher.setCathedra(cathedra);
-        DataBase.getInstance().addTeacher(teacher);
-        System.out.println("Викладача успішно додано до кафедри: " + teacherName + " -> " + cathedraName);
     }
 
     private static void addStudentGroup() {
-        int groupNumber = DataInput.getInt("Введіть номер групи:");
-        String groupName = DataInput.getString("Введіть назву групи:");
-        String cathedraName = DataInput.getString("Введіть назву кафедри, до якої додається група:");
-
-        Cathedra[] cathedras = DataBase.getInstance().getCathedras();
-        Cathedra cathedra = null;
-        for (Cathedra c : cathedras) {
-            if (c.getCathName().equals(cathedraName)) {
-                cathedra = c;
-                break;
+        if(DataBase.getInstance().getCathedras().length!=0){
+            int groupNum = DataInput.getInt("Введіть номер групи, на яку записуємо");
+            String groupName = DataInput.getString("Введіть ім'я групи");
+            String cathedra = DataInput.getString("Введіть кафедру на якій група");
+            String faculty = DataInput.getString("Введіть факультет, на якому кафедра");
+            while(!ArrayManager.ifContains(DataBase.getInstance().getCathedras(),
+                    new Cathedra(cathedra, new Faculty(faculty)))) {
+                System.out.println("Щось неправильно введено");
+                cathedra = DataInput.getString("Введіть кафедру на якій група");
+                faculty = DataInput.getString("Введіть факультет, на якому кафедра");
             }
+            DataBase.getInstance().setGroups(ArrayManager.addToAr(DataBase.getInstance().getGroups(),
+                    new Group(groupNum, groupName, new Cathedra(cathedra, new Faculty(faculty)))));
+        }else{
+            System.out.println("Немає ще кафедр для запису");
         }
-
-        if (cathedra == null) {
-            System.out.println("Кафедру з назвою " + cathedraName + " не знайдено.");
-            return;
-        }
-
-        Group group = new Group(groupNumber, groupName, cathedra);
-        DataBase.getInstance().addGroup(group);
-        System.out.println("Групу успішно додано до кафедри: " + groupName + " -> " + cathedraName);
     }
 }
