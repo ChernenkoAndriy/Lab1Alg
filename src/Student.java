@@ -66,4 +66,14 @@ public class Student extends Human{
     public void setGroup(Group group) {
         this.group = group;
     }
+
+    @Override
+    public String getNsp() {
+        return nsp;
+    }
+
+    @Override
+    public void setNsp(String nsp) {
+        this.nsp = nsp;
+    }
 }
