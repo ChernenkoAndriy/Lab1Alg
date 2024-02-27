@@ -16,6 +16,7 @@ public class AddMenu {
                     "4. Додати викладача до кафедри\n" +
                     "b. Повернутися до головного меню");
 
+
             switch (act) {
                 case '1':
                     addFaculty();
@@ -69,6 +70,7 @@ public class AddMenu {
         int course = DataInput.getInt("Введіть курс студента:");
         String groupName = DataInput.getString("Введіть назву групи студента:");
         String cathedraName = DataInput.getString("Введіть назву кафедри, до якої додається студент:");
+
         Cathedra[] cathedras = DataBase.getInstance().getCathedras();
         Cathedra cathedra = null;
         for (Cathedra c : cathedras) {
@@ -77,11 +79,12 @@ public class AddMenu {
                 break;
             }
         }
+
         if (cathedra == null) {
             System.out.println("Кафедру з назвою " + cathedraName + " не знайдено.");
             return;
         }
-        // Пошук групи за назвою
+
         Group[] groups = DataBase.getInstance().getGroups();
         Group group = null;
         for (Group g : groups) {
@@ -90,10 +93,12 @@ public class AddMenu {
                 break;
             }
         }
+
         if (group == null) {
             System.out.println("Групу з назвою " + groupName + " не знайдено для кафедри " + cathedraName);
             return;
         }
+
         Student student = new Student(studentName, course, group);
         DataBase.getInstance().addStudent(student);
         System.out.println("Студента успішно додано до кафедри: " + studentName + " -> " + cathedraName);
