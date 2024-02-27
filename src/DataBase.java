@@ -38,38 +38,24 @@ public class DataBase {
     public Group[] getGroups() {
         return groups;
     }
-    public void addStudent(Student student) {
-        Student[] newStudents = new Student[students.length + 1];
-        System.arraycopy (students, 0, newStudents, 0, students.length);
-        newStudents[students.length] = student;
-        students = newStudents;
+
+    public void setStudents(Student[] students) {
+        this.students = students;
     }
 
-    public void addTeacher(Teacher teacher) {
-        Teacher[] newTeachers = new Teacher[teachers.length + 1];
-        System.arraycopy (teachers, 0, newTeachers, 0, teachers.length);
-        newTeachers[teachers.length] = teacher;
-        teachers = newTeachers;
+    public void setTeachers(Teacher[] teachers) {
+        this.teachers = teachers;
     }
 
-    public void addFaculty(Faculty faculty) {
-        Faculty[] newFaculties = new Faculty[faculties.length + 1];
-        System.arraycopy (faculties, 0, newFaculties, 0, faculties.length);
-        newFaculties[faculties.length] = faculty;
-        faculties = newFaculties;
+    public void setFaculties(Faculty[] faculties) {
+        this.faculties = faculties;
     }
 
-    public void addCathedra(Cathedra cathedra) {
-        Cathedra[] newCathedras = new Cathedra[cathedras.length + 1];
-        System.arraycopy (cathedras, 0, newCathedras, 0, cathedras.length);
-        newCathedras[cathedras.length] = cathedra;
-        cathedras = newCathedras;
+    public void setCathedras(Cathedra[] cathedras) {
+        this.cathedras = cathedras;
     }
 
-    public void addGroup(Group group) {
-        Group[] newGroups = new Group[groups.length + 1];
-        System.arraycopy (groups, 0, newGroups, 0, groups.length);
-        newGroups[groups.length] = group;
-        groups = newGroups;
+    public void setGroups(Group[] groups) {
+        this.groups = groups;
     }
 }

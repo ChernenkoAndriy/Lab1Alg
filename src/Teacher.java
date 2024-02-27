@@ -8,6 +8,12 @@ public class Teacher extends Human implements Comparable<Human>{
 
     private String nsp;       // Name, Surname, and Patronymic
     private Cathedra cathedra; // The academic department (Cathedra) to which the teacher is affiliated
+
+    public Teacher(String nsp, Cathedra cathedra) {
+        this.nsp = nsp;
+        this.cathedra = cathedra;
+    }
+
     /**
      * Compares this teacher with another teacher based on their names.
      *
@@ -33,14 +39,6 @@ public class Teacher extends Human implements Comparable<Human>{
         super.setNsp(nsp);
     }
     // Конструктор з трьома аргументами
-    public Teacher(String name, String surname, String patronymic) {
-        super();
-        this.setNsp(name + " " + surname + " " + patronymic);
-    }
-    // Конструктор з одним аргументом - ім'ям
-    public Teacher(String name) {
-        super();
-        this.setNsp(name + "  " + " " + " ");
-    }
+
 }
 
