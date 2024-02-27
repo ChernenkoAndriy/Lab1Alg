@@ -24,6 +24,10 @@ public class Group{
         this.groupName = groupName;
         this.cathedra = cathedra;
     }
+    public Group(String groupName, Cathedra cathedra) {
+        this.groupName = groupName;
+        this.cathedra = cathedra;
+    }
 
     //getters and setters
     public Cathedra getCathedra() {
@@ -47,7 +51,6 @@ public class Group{
     public void setGroupName(String groupName) {
         this.groupName = groupName;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

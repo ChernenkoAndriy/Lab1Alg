@@ -14,6 +14,7 @@ public class AddMenu {
                     "2. Додати кафедру до факультета\n" +
                     "3. Додати студента до кафедри\n" +
                     "4. Додати викладача до кафедри\n" +
+                    "5. Додати групу студента\n" +
                     "b. Повернутися до головного меню");
 
 
@@ -29,6 +30,9 @@ public class AddMenu {
                     break;
                 case '4':
                     addTeacherToCathedra();
+                    break;
+                case '5':
+                    addStudentGroup();
                     break;
                 case 'b':
                     return;
@@ -82,7 +86,36 @@ public class AddMenu {
 
         if (cathedra == null) {
             System.out.println("Кафедру з назвою " + cathedraName + " не знайдено.");
-            return;
+            System.out.println("Наявні кафедри:");
+
+            for (Cathedra c : cathedras) {
+                System.out.println("- " + c.getCathName());
+            }
+
+            char addCathedraChoice = DataInput.getChar("Чи бажаєте додати нову кафедру? (y/n): ");
+            if (addCathedraChoice == 'y') {
+                String newCathedraName = DataInput.getString("Введіть назву нової кафедри:");
+                String facultyName = DataInput.getString("Введіть назву факультету, до якого додається кафедра:");
+
+                Faculty[] faculties = DataBase.getInstance().getFaculties();
+                Faculty faculty = null;
+                for (Faculty f : faculties) {
+                    if (f.getFacName().equals(facultyName)) {
+                        faculty = f;
+                        break;
+                    }
+                }
+                if (faculty == null) {
+                    System.out.println("Факультет з назвою " + facultyName + " не знайдено.");
+                    return;
+                }
+                Cathedra newCathedra = new Cathedra(newCathedraName, faculty);
+                DataBase.getInstance().addCathedra(newCathedra);
+                System.out.println("Нову кафедру успішно додано: " + newCathedraName);
+                cathedra = newCathedra;
+            } else {
+                return;
+            }
         }
 
         Group[] groups = DataBase.getInstance().getGroups();
@@ -96,7 +129,17 @@ public class AddMenu {
 
         if (group == null) {
             System.out.println("Групу з назвою " + groupName + " не знайдено для кафедри " + cathedraName);
-            return;
+
+            char addNewGroupChoice = DataInput.getChar("Бажаєте додати нову групу? (Так - 'y', Ні - 'n'): ");
+            if (addNewGroupChoice == 'y') {
+                String newGroupName = DataInput.getString("Введіть назву нової групи:");
+                Group newGroup = new Group(newGroupName, cathedra);
+                DataBase.getInstance().addGroup(newGroup);
+                System.out.println("Нову групу успішно додано: " + newGroupName);
+                group = newGroup;
+            } else {
+                return;
+            }
         }
 
         Student student = new Student(studentName, course, group);
@@ -123,5 +166,29 @@ public class AddMenu {
         teacher.setCathedra(cathedra);
         DataBase.getInstance().addTeacher(teacher);
         System.out.println("Викладача успішно додано до кафедри: " + teacherName + " -> " + cathedraName);
+    }
+
+    private static void addStudentGroup() {
+        int groupNumber = DataInput.getInt("Введіть номер групи:");
+        String groupName = DataInput.getString("Введіть назву групи:");
+        String cathedraName = DataInput.getString("Введіть назву кафедри, до якої додається група:");
+
+        Cathedra[] cathedras = DataBase.getInstance().getCathedras();
+        Cathedra cathedra = null;
+        for (Cathedra c : cathedras) {
+            if (c.getCathName().equals(cathedraName)) {
+                cathedra = c;
+                break;
+            }
+        }
+
+        if (cathedra == null) {
+            System.out.println("Кафедру з назвою " + cathedraName + " не знайдено.");
+            return;
+        }
+
+        Group group = new Group(groupNumber, groupName, cathedra);
+        DataBase.getInstance().addGroup(group);
+        System.out.println("Групу успішно додано до кафедри: " + groupName + " -> " + cathedraName);
     }
 }
