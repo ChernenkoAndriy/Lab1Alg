@@ -2,13 +2,13 @@
  * Цей клас (EditMenu) представляє меню редагування, де користувач може вибрати опції для створення,
  * видалення або редагування факультетів, кафедр факультета,
  * а також додавання, видалення або редагування студентів/викладачів до кафедри.
-*/
+ */
 public class EditMenu {
-    private static Student[] students =DataBase.getInstance().getStudents();
-    private static Teacher[] teachers= DataBase.getInstance().getTeachers();
-    private static Faculty[] faculties=DataBase.getInstance().getFaculties();
-    private static Cathedra[] cathedras=DataBase.getInstance().getCathedras();
-    private static Group[] groups= DataBase.getInstance().getGroups();
+    private static Student[] students;
+    private static Teacher[] teachers;
+    private static Faculty[] faculties;
+    private static Cathedra[] cathedras;
+    private static Group[] groups;
     /**
      * Конструктор класу EditMenu.
      */
@@ -19,6 +19,11 @@ public class EditMenu {
      * Метод, який запускає головне меню редагування.
      */
     public static void run() {
+        students =DataBase.getInstance().getStudents();
+        teachers= DataBase.getInstance().getTeachers();
+        faculties=DataBase.getInstance().getFaculties();
+        cathedras=DataBase.getInstance().getCathedras();
+        groups= DataBase.getInstance().getGroups();
         while (true) {
             String act = DataInput.getString("Введіть номер дії, яку хочете виконати:\n" +
                     "1. Видалити факультет\n" +
@@ -57,6 +62,11 @@ public class EditMenu {
                     editTeacherInCath();
                     break;
                 case "b":
+                    DataBase.getInstance().setFaculties(faculties);
+                    DataBase.getInstance().setCathedras(cathedras);
+                    DataBase.getInstance().setTeachers(teachers);
+                    DataBase.getInstance().setGroups(groups);
+                    DataBase.getInstance().setStudents(students);
                     return;
                 default:
                     System.out.println("Ви ввели невірну команду");
@@ -67,32 +77,39 @@ public class EditMenu {
      * Метод для редагування вчителя в кафедрі.
      */
     private static void editTeacherInCath() {
-        String cathName= DataInput.getString("Введіть назву кафедри.");
-        Cathedra[] cathArray=DataBase.getInstance().getCathedras();
-        if(ArrayManager.ifContains(cathArray, cathName)){
-            String nsp=DataInput.getString("Введіть ПІБ студента");
-            for(int i=0;i< teachers.length;i++){
-                if(teachers[i].getNsp().equals(nsp)){
-                    editTeacher(teachers[i]);
-                    break;
-                }
-                if(i+1== teachers.length){
-                    System.out.println("Вчителя з таким іменем не існує");
+        String facCathDel = DataInput.getString("Введіть назву факультету. ");
+        Faculty searchFac=new Faculty(facCathDel);
+        if (ArrayManager.ifContains(DataBase.getInstance().getFaculties(), searchFac)) {
+            String cathName= DataInput.getString("Введіть назву кафедри.");
+            if(ArrayManager.ifContains(cathedras, new Cathedra(cathName,searchFac))){
+                String nsp=DataInput.getString("Введіть ПІБ вчителя");
+                for(int i=0;i< teachers.length;i++){
+                    if(teachers[i].getNsp().equals(nsp)){
+                        editTeacher(teachers[i]);
+                        System.out.println("Вчителя редаговано");
+                        break;
+                    }
+                    if(i+1== teachers.length){
+                        System.out.println("Вчителя з таким іменем не існує");
+                    }
                 }
             }
-        }
-        else{
-            System.out.println("Кафедри з такою назвою не існує");
+            else{
+                System.out.println("Кафедри з такою назвою не існує");
+            }
+        } else {
+            System.out.println("Факультету з такою назвою не існує");
         }
     }
     /**
      * Метод для редагування вчителя.
      */
     private static void editTeacher(Teacher teacher) {
-        int answr=DataInput.getInt("\n"+
+        while (true){
+            int answr=DataInput.getInt("\n"+
                 "1.Змінити ПІБ.\n"+
                 "2.Змінити кафедру.\n"+
-                "3. Закінчити редагування студента і повернутися назад.");
+                "3. Закінчити редагування вчителя і повернутися назад.");
         switch (answr){
             case 1:
                 String newName= DataInput.getString("Введіть новий ПІБ");
@@ -100,64 +117,94 @@ public class EditMenu {
                 break;
             case 2:
                 String newCathedra= DataInput.getString("Введіть нову назву кафедри");
-                teacher.getCathedra().setCathName(newCathedra);
+                  int succ=0;
+                    for (Cathedra cathedra : cathedras) {
+                        if (cathedra.getCathName().equals(newCathedra)) {
+                            teacher.setCathedra(cathedra);
+                            succ++;
+                             break;
+                        }
+
+                    }
+                    if(succ==0) System.out.println("Такої кафедри не існує!!! Спочатку додайте кафедру");
 
                 break;
             case 3:
+
                 return;
             default:
                 System.out.println("Ви ввели невірну команду");
 
-        }
+        }}
     }
     /**
      * Метод для видалення вчителя з кафедри.
      */
     private static void delTeacherInCath() {
-        String cathName= DataInput.getString("Введіть назву кафедри.");
-        Cathedra[] cathArray=DataBase.getInstance().getCathedras();
-        if(ArrayManager.ifContains(cathArray, cathName)){
-            String nsp=DataInput.getString("Введіть ПІБ вчителя");
-            for(int i=0;i< teachers.length;i++){
-                if(teachers[i].getNsp().equals(nsp)){
-                    ArrayManager.delFromArr(teachers,i);
-                    break;
+        String facCathDel = DataInput.getString("Введіть назву факультету. ");
+        Faculty searchFac=new Faculty(facCathDel);
+        if (ArrayManager.ifContains(DataBase.getInstance().getFaculties(), searchFac)) {
+            String cathName= DataInput.getString("Введіть назву кафедри.");
+            if(ArrayManager.ifContains(cathedras,new Cathedra(cathName,searchFac))){
+                String nsp=DataInput.getString("Введіть ПІБ вчителя");
+                for(int i=0;i< teachers.length;i++){
+                    if(teachers[i].getNsp().equals(nsp)){
+                        teachers=ArrayManager.delFromArr(teachers,i);
+                        System.out.println("Вчителя видалено");
+
+                        break;
+                    }
+                    if(i+1== teachers.length){
+                        System.out.println("Вчителя з таким іменем не існує");
+                    }
                 }
-                if(i+1== teachers.length){
+                if(teachers.length==0){
                     System.out.println("Вчителя з таким іменем не існує");
                 }
             }
-        }
-        else{
-            System.out.println("Кафедри з такою назвою не існує");
+            else{
+                System.out.println("Кафедри з такою назвою не існує");
+            }
+        } else {
+            System.out.println("Факультету з такою назвою не існує");
         }
     }
     /**
      * Метод для редагування студента в кафедрі.
      */
     private static void editStudentInCath() {
-        String cathName= DataInput.getString("Введіть назву кафедри.");
-        Cathedra[] cathArray=DataBase.getInstance().getCathedras();
-        if(ArrayManager.ifContains(cathArray, cathName)){
-            String nsp=DataInput.getString("Введіть ПІБ студента");
-            for(int i=0;i< students.length;i++){
-                if(students[i].getNsp().equals(nsp)){
-                    editStudent(students[i]);
-                    break;
+        String facCathDel = DataInput.getString("Введіть назву факультету. ");
+        Faculty searchFac=new Faculty(facCathDel);
+        if (ArrayManager.ifContains(DataBase.getInstance().getFaculties(), searchFac)) {
+            String cathName= DataInput.getString("Введіть назву кафедри.");
+            if(ArrayManager.ifContains(cathedras,new Cathedra(cathName,searchFac))){
+                String nsp=DataInput.getString("Введіть ПІБ студента");
+                for(int i=0;i< students.length;i++){
+                    if(students[i].getNsp().equals(nsp)){
+                        editStudent(students[i]);
+                        System.out.println("Студента редаговано");
+                        break;
+                    }
+                    if(i+1== students.length){
+                        System.out.println("Учня з таким іменем не існує");
+                    }
                 }
-                if(i+1== students.length){
+                if(students.length==0){
                     System.out.println("Учня з таким іменем не існує");
                 }
             }
-        }
-        else{
-            System.out.println("Кафедри з такою назвою не існує");
+            else{
+                System.out.println("Кафедри з такою назвою не існує");
+            }
+        } else {
+            System.out.println("Факультету з такою назвою не існує");
         }
     }
     /**
      * Метод для редагування студента.
      */
     private static void editStudent(Student student) {
+        while (true){
         int answr=DataInput.getInt("\n"+
                 "1.Змінити ПІБ.\n"+
                 "2.Змінити курс.\n"+
@@ -170,39 +217,58 @@ public class EditMenu {
                 break;
             case 2:
                 int newCourse=DataInput.getInt("Ведіть новий номер курсу");
+                while (newCourse<=0){
+                    newCourse=DataInput.getInt("Ведіть коректний номер курсу");
+                }
                 student.setCourse(newCourse);
                 break;
             case 3:
                 String newGroupName= DataInput.getString("Введіть нову спеціальність");
-                student.getGroup().setGroupName(newGroupName);
+                int succ=0;
+                    for (Group group : groups) {
+                        if (group.getGroupName().equals(newGroupName)) {
+                            student.setGroup(group);
+                            succ++;
+                            break;
+                        }
+                    }
+                if(succ==0) System.out.println("Такої спеціальності не існує. Спочатку додайте цю спеціальність");
+
                 break;
             case 4:
+
                 return;
             default:
                 System.out.println("Ви ввели невірну команду");
 
-        }
+        }}
     }
     /**
      * Метод для видалення студента з кафедри.
      */
     private static void delStudentInCath() {
-        String cathName= DataInput.getString("Введіть назву кафедри.");
-        Cathedra[] cathArray=DataBase.getInstance().getCathedras();
-        if(ArrayManager.ifContains(cathArray, cathName)){
-            String nsp=DataInput.getString("Введіть ПІБ студента");
-            for(int i=0;i< students.length;i++){
-                if(students[i].getNsp().equals(nsp)){
-                    ArrayManager.delFromArr(students,i);
-                    break;
-                }
-                if(i+1== students.length){
-                    System.out.println("Учня з таким іменем не існує");
+        String facCathDel = DataInput.getString("Введіть назву факультету. ");
+        Faculty searchFac=new Faculty(facCathDel);
+        if (ArrayManager.ifContains(DataBase.getInstance().getFaculties(), searchFac)) {
+            String cathName= DataInput.getString("Введіть назву кафедри.");
+            if(ArrayManager.ifContains(cathedras, new Cathedra(cathName,searchFac))){
+                String nsp=DataInput.getString("Введіть ПІБ студента");
+                for(int i=0;i< students.length;i++){
+                    if(students[i].getNsp().equals(nsp)){
+                        students=ArrayManager.delFromArr(students,i);
+                        System.out.println("Студента видалено");
+                        break;
+                    }
+                    if(i+1== students.length){
+                        System.out.println("Учня з таким іменем не існує");
+                    }
                 }
             }
-        }
-        else{
-            System.out.println("Кафедри з такою назвою не існує");
+            else{
+                System.out.println("Кафедри з такою назвою не існує");
+            }
+        } else {
+            System.out.println("Факультету з такою назвою не існує");
         }
     }
     /**
@@ -211,21 +277,21 @@ public class EditMenu {
     private static void renameCathedraInFac() {
         String facCathDel = DataInput.getString("Введіть назву факультету. ");
         Faculty searchFac=new Faculty(facCathDel);
-        if (ArrayManager.ifContains(DataBase.getInstance().getFaculties(), searchFac)) {
+        if (ArrayManager.ifContains(faculties, searchFac)) {
             String cathName= DataInput.getString("Введіть назву кафедри.");
             Cathedra searchCath= new Cathedra(cathName,searchFac);
             if(ArrayManager.ifContains(cathedras, searchCath)){
                 String newCathName= DataInput.getString("Введіть нову назву кафедри. ");
-                searchCath.setCathName(newCathName);
+                Cathedra temp=new Cathedra(newCathName, searchFac);
                 // перевірка чи є вже нова назва кафедри в списках
-                if(!ArrayManager.ifContains(cathedras, searchCath)){
+                if(!ArrayManager.ifContains(cathedras, temp)){
                     for (Cathedra cath : cathedras) {
                         if (cath.getCathName().equals(cathName)) {
                             cath.setCathName(newCathName);
                             break;
                         }
                     }
-                    System.out.println("Succ. Кафедру перейменовано");
+                    System.out.println("Успіх. Кафедру перейменовано");
                 }
                 else{
                     System.out.println("Кафедра з такою назвою вже існує");
@@ -252,11 +318,11 @@ public class EditMenu {
                     if(cathedras[i].getCathName().equals(cathDel)){
                         delAllteachers(cathDel);
                         deleteGroup(cathDel);
-                        ArrayManager.delFromArr(cathedras,i);
+                        cathedras=ArrayManager.delFromArr(cathedras,i);
                         break;
                     }
                 }
-                System.out.println("Succ. Кафедру видалено");
+                System.out.println("Успіх. Кафедру видалено");
             }
             else{
                 System.out.println("Кафедри з такою назвою не існує");
@@ -271,6 +337,7 @@ public class EditMenu {
             if(cathedras[i].getFaculty().getFacName().equals(facName)){
                 delAllteachers(cathedras[i].getCathName());
                 deleteGroup(cathedras[i].getCathName());
+                cathedras=ArrayManager.delFromArr(cathedras,i);
                 i--;
             }
         }
@@ -291,7 +358,7 @@ public class EditMenu {
                         break;
                     }
                 }
-                System.out.println("Succ. Факультет перейменовано");
+                System.out.println("Успіх. Факультет перейменовано");
             }
             else {
                 System.out.println("Факультет з такою назвою вже існує");
@@ -307,10 +374,16 @@ public class EditMenu {
 
         String s = DataInput.getString("Введіть назву факультету. Все, що пов'язате з цим факультетом буде видалене!!! ");
         Faculty searchFac=new Faculty(s);
-        if (ArrayManager.ifContains(DataBase.getInstance().getFaculties(), searchFac)) {
+        if (ArrayManager.ifContains(faculties, searchFac)) {
             //видалення кафедр
             delAllCathedras(s);
-            System.out.println("Succ.Факультет видалено");
+
+            for(int i=0;i< faculties.length;i++){
+                if(faculties[i].equals(searchFac)){
+                    faculties=ArrayManager.delFromArr(faculties,i);
+                }
+            }
+            System.out.println("Успіх.Факультет видалено");
         } else {
             System.out.println("Факультету з такою назвою не існує");
         }
@@ -322,7 +395,7 @@ public class EditMenu {
         //видалення вчителів
         for (int j = 0; j < teachers.length; j++) {
             if (teachers[j].getCathedra().getCathName().equals(cathName)) {
-                ArrayManager.delFromArr(DataBase.getInstance().getTeachers(), j);
+                teachers=ArrayManager.delFromArr(teachers, j);
                 j--;
             }
         }
@@ -334,15 +407,15 @@ public class EditMenu {
         //видалення груп/спеціальностей+ студентів
         for (int j = 0; j < groups.length; j++) {
             if (groups[j].getCathedra().getCathName().equals(cathName)) {
-                String groupName = DataBase.getInstance().getGroups()[j].getGroupName();
+                String groupName = groups[j].getGroupName();
                 // видалення студентів
                 for (int k = 0; k < students.length; k++) {
                     if (students[k].getGroup().getGroupName().equals(groupName)) {
-                        ArrayManager.delFromArr(students, k);
+                        students=ArrayManager.delFromArr(students, k);
                         k--;
                     }
                 }
-                ArrayManager.delFromArr(groups, j);
+                groups=ArrayManager.delFromArr(groups, j);
                 j--;
             }
         }

@@ -25,12 +25,11 @@ public class Teacher extends Human implements Comparable<Human>{
         this.cathedra = cathedra;
     }
     @Override
-    public String getNsp() {
-        return super.getNsp();
-    }
+    public String getNsp() { return nsp; }
     @Override
     public void setNsp(String nsp) {
         super.setNsp(nsp);
+        this.nsp=nsp;
     }
     // Конструктор з трьома аргументами
     public Teacher(String name, String surname, String patronymic) {
@@ -40,7 +39,7 @@ public class Teacher extends Human implements Comparable<Human>{
     // Конструктор з одним аргументом - ім'ям
     public Teacher(String name) {
         super();
-        this.setNsp(name + "  " + " " + " ");
+        this.setNsp(name);
     }
 }
 
