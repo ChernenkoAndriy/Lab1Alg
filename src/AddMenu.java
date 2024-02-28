@@ -12,9 +12,9 @@ public class AddMenu {
             char act = DataInput.getChar("Введіть номер дії, яку хочете виконати:\n" +
                     "1. Додати факультет\n" +
                     "2. Додати кафедру до факультета\n" +
-                    "3. Додати студента до кафедри\n" +
+                    "3. Додати студента до групи\n" +
                     "4. Додати викладача до кафедри\n" +
-                    "5. Додати групу студента\n" +
+                    "5. Додати спеціальність до кафедри\n" +
                     "b. Повернутися до головного меню");
 
 
@@ -72,15 +72,15 @@ public class AddMenu {
            while (course<=0 || course>5)
                course = DataInput.getInt("Курс має бути від 1 до 5");
            int groupNum = DataInput.getInt("Введіть номер групи, на яку записуємо");
-           String groupName = DataInput.getString("Введіть ім'я групи");
-           String cathedra = DataInput.getString("Введіть кафедру на якій група");
+           String groupName = DataInput.getString("Введіть ім'я спеціальності");
+           String cathedra = DataInput.getString("Введіть кафедру на якій спеціальність");
            String faculty = DataInput.getString("Введіть факультет, на якому кафедра");
            while(!ArrayManager.ifContains(DataBase.getInstance().getGroups(),
                    new Group(groupNum, groupName, new Cathedra(cathedra, new Faculty(faculty))))){
                System.out.println("Щось неправильно введено");
                groupNum = DataInput.getInt("Введіть номер групи, на яку записуємо");
-               groupName = DataInput.getString("Введіть ім'я групи");
-               cathedra = DataInput.getString("Введіть кафедру на якій група");
+               groupName = DataInput.getString("Введіть ім'я спеціальності");
+               cathedra = DataInput.getString("Введіть кафедру на якій спеціальність");
                faculty = DataInput.getString("Введіть факультет, на якому кафедра");
            }
            DataBase.getInstance().setStudents(ArrayManager.addToAr(DataBase.getInstance().getStudents(),
@@ -110,7 +110,7 @@ public class AddMenu {
 
     private static void addStudentGroup() {
         if(DataBase.getInstance().getCathedras().length!=0){
-            int groupNum = DataInput.getInt("Введіть номер групи, на яку записуємо");
+            int groupNum = DataInput.getInt("Введіть номер групи");
             String groupName = DataInput.getString("Введіть ім'я групи");
             String cathedra = DataInput.getString("Введіть кафедру на якій група");
             String faculty = DataInput.getString("Введіть факультет, на якому кафедра");

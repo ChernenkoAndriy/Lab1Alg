@@ -1,4 +1,5 @@
 import java.lang.reflect.Array;
+import java.util.Arrays;
 
 /**
  * The ArrayManager class provides utility methods for managing arrays in Java.
@@ -17,11 +18,11 @@ public class ArrayManager {
      * @return A new array with the added element.
      */
     public static <T> T[] addToAr(T[] t, T ob) {
-        T[] arr = (T[]) new Object [t.length + 1];
-        System.arraycopy(t, 0, arr, 0, t.length);
+        T[] arr = Arrays.copyOf(t, t.length + 1);
         arr[arr.length - 1] = ob;
         return arr;
     }
+
 
     /**
      * Deletes an element from the array at the specified index.

@@ -218,11 +218,11 @@ public class StatMenu {
     }
 
     private static Student[] studentsBycourses(Student[] students) {
-        for (int i = 0; i < students.length; i++) {
-            if (students[i].compareByCourse(students[i+1]) == -1) {
+        for (int i = 1; i < students.length; i++) {
+            if (students[i].compareByCourse(students[i-1]) == -1) {
                 Student a = students[i];
-                students[i] = students[i + 1];
-                students[i + 1] = a;
+                students[i] = students[i - 1];
+                students[i - 1] = a;
             }
         }
         return students;
