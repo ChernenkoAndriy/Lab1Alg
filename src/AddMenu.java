@@ -52,8 +52,15 @@ public class AddMenu {
         if (DataBase.getInstance().getFaculties().length !=0) {
             String cathedraName = DataInput.getString("Введіть назву кафедри:");
             String facultyName = DataInput.getString("Введіть назву факультету, до якого додається кафедра:");
-            while (!ArrayManager.ifContains(DataBase.getInstance().getFaculties(), new Faculty(facultyName)))
-                facultyName = DataInput.getString("Немає такого факультета:");
+            while (!ArrayManager.ifContains(DataBase.getInstance().getFaculties(), new Faculty(facultyName))) {
+                char choice = DataInput.getChar("Щось не так. Введіть y, якщо хочете " +
+                        "спробувати заново або b, щоб вийти");
+                while (choice != 'y' && choice != 'b')
+                    choice = DataInput.getChar("Щось не так. Введіть y, якщо хочете " +
+                            "спробувати заново або b, щоб вийти");
+                if(choice == 'b') break;
+                facultyName = DataInput.getString("Введіть назву факультету, до якого додається кафедра:");
+            }
            DataBase.getInstance().setCathedras(
                    ArrayManager.addToAr(
                            DataBase.getInstance().getCathedras(),
@@ -76,7 +83,12 @@ public class AddMenu {
            String faculty = DataInput.getString("Введіть факультет, на якому кафедра");
            while(!ArrayManager.ifContains(DataBase.getInstance().getGroups(),
                    new Group(groupNum, groupName, new Cathedra(cathedra, new Faculty(faculty))))){
-               System.out.println("Щось неправильно введено");
+               char choice = DataInput.getChar("Щось не так. Введіть y, якщо хочете " +
+                       "спробувати заново або b, щоб вийти");
+               while (choice != 'y' && choice != 'b')
+                   choice = DataInput.getChar("Щось не так. Введіть y, якщо хочете " +
+                           "спробувати заново або b, щоб вийти");
+               if(choice == 'b') break;
                groupNum = DataInput.getInt("Введіть номер групи, на яку записуємо");
                groupName = DataInput.getString("Введіть ім'я спеціальності");
                cathedra = DataInput.getString("Введіть кафедру на якій спеціальність");
@@ -96,7 +108,12 @@ public class AddMenu {
             String faculty = DataInput.getString("Введіть факультет, на якому кафедра");
             while(!ArrayManager.ifContains(DataBase.getInstance().getCathedras(),
                     new Cathedra(cathedra, new Faculty(faculty)))) {
-                System.out.println("Щось неправильно введено");
+                char choice = DataInput.getChar("Щось не так. Введіть y, якщо хочете " +
+                        "спробувати заново або b, щоб вийти");
+                while (choice != 'y' && choice != 'b')
+                    choice = DataInput.getChar("Щось не так. Введіть y, якщо хочете " +
+                            "спробувати заново або b, щоб вийти");
+                if(choice == 'b') break;
                 cathedra = DataInput.getString("Введіть кафедру на яку запишемо викладача");
                 faculty = DataInput.getString("Введіть факультет, на якому кафедра");
             }
@@ -115,7 +132,12 @@ public class AddMenu {
             String faculty = DataInput.getString("Введіть факультет, на якому кафедра");
             while(!ArrayManager.ifContains(DataBase.getInstance().getCathedras(),
                     new Cathedra(cathedra, new Faculty(faculty)))) {
-                System.out.println("Щось неправильно введено");
+                char choice = DataInput.getChar("Щось не так. Введіть y, якщо хочете " +
+                        "спробувати заново або b, щоб вийти");
+                while (choice != 'y' && choice != 'b')
+                    choice = DataInput.getChar("Щось не так. Введіть y, якщо хочете " +
+                            "спробувати заново або b, щоб вийти");
+                if(choice == 'b') break;
                 cathedra = DataInput.getString("Введіть кафедру на якій група");
                 faculty = DataInput.getString("Введіть факультет, на якому кафедра");
             }
