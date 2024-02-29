@@ -5,8 +5,6 @@ import java.io.Serializable;
  * and affiliated Cathedra.
  */
 public class Teacher extends Human implements Comparable<Human>{
-
-    private String nsp;       // Name, Surname, and Patronymic
     private Cathedra cathedra; // The academic department (Cathedra) to which the teacher is affiliated
 
     public Teacher(String nsp, Cathedra cathedra) {

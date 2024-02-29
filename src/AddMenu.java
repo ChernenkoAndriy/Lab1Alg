@@ -61,7 +61,7 @@ public class AddMenu {
                            new Cathedra(cathedraName, new Faculty(facultyName))));
 
         }else {
-            System.out.println("Немає факультетів ще");
+            System.out.println("Немає факультетів для запису ");
         }
     }
 

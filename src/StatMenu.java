@@ -6,7 +6,7 @@ public class StatMenu {
 
     public static void run() {
         while (true) {
-            int act = DataInput.getInt("Введіть номер дії, яку хочете виконати:\n" +
+            String act = DataInput.getString("Введіть номер дії, яку хочете виконати:\n" +
                     "1. Вивести всіх студентів впорядкованих за курсами\n" +
                     "2. Вивести всіх студентів факультета впорядкованих за алфавітом\n" +
                     "3. Вивести всіх викладачів факультета впорядкованих за алфавітом\n" +
@@ -21,14 +21,14 @@ public class StatMenu {
                     "b. Повернутися до головного меню");
 
             switch (act) {
-                case 1:
+                case "1":
                     if (DataBase.getInstance().getStudents().length != 0) {
                         ArrayManager.print(studentsBycourses(DataBase.getInstance().getStudents()));
                     } else {
                         System.out.println("Немає студентів");
                     }
                     break;
-                case 2:
+                case "2":
                     String faculty = DataInput.getString("Введіть назву факультета");
                     Faculty fac = new Faculty(faculty);
                     if (ArrayManager.ifContains(DataBase.getInstance().getFaculties(), fac)){
@@ -46,7 +46,7 @@ public class StatMenu {
                     System.out.println("Немає такого факультета");
                 }
                 break;
-                case 3:
+                case "3":
                      faculty = DataInput.getString("Введіть назву факультета");
                      fac = new Faculty(faculty);
                     if (ArrayManager.ifContains(DataBase.getInstance().getFaculties(), fac)){
@@ -64,7 +64,7 @@ public class StatMenu {
                         System.out.println("Немає такого факультета");
                     }
                     break;
-                case 4:
+                case "4":
                     String cathedraName = DataInput.getString("Введіть назву кафедри, яку шукаємо");
                     faculty = DataInput.getString("Введіть назву факультета, до якого належить кафедра");
                     Cathedra cath = new Cathedra(cathedraName, new Faculty(faculty));
@@ -84,7 +84,7 @@ public class StatMenu {
                     }
                     // виведення всіх студентів кафедри впорядкованих за курсами
                     break;
-                case 5:
+                case "5":
                     cathedraName = DataInput.getString("Ввеліть назву кафедри, яку шукаємо");
                     faculty = DataInput.getString("Введіть назву факультета, до якого належить кафедра");
                     cath = new Cathedra(cathedraName, new Faculty(faculty));
@@ -104,7 +104,7 @@ public class StatMenu {
                     }
                     // виведення всіх студентів кафедри впорядкованих за алфавітом
                     break;
-                case 6:
+                case "6":
                     cathedraName = DataInput.getString("Ввеліть назву кафедри, яку шукаємо");
                     faculty = DataInput.getString("Введіть назву факультета, до якого належить кафедра");
                     cath = new Cathedra(cathedraName, new Faculty(faculty));
@@ -124,7 +124,7 @@ public class StatMenu {
                     }
                     // виведення всіх викладачів кафедри впорядкованих за алфавітом
                     break;
-                case 7:
+                case "7":
                     cathedraName = DataInput.getString("Ввеліть назву кафедри, яку шукаємо");
                     faculty = DataInput.getString("Введіть назву факультета, до якого належить кафедра");
                     int course = DataInput.getInt("Введіть курс");
@@ -145,7 +145,7 @@ public class StatMenu {
                     }
                     // виведення всіх студентів кафедри вказаного курсу
                     break;
-                case 8:
+                case "8":
                     cathedraName = DataInput.getString("Ввеліть назву кафедри, яку шукаємо");
                     faculty = DataInput.getString("Введіть назву факультета, до якого належить кафедра");
                      course = DataInput.getInt("Введіть курс");
@@ -166,7 +166,7 @@ public class StatMenu {
                     }
                     // виведення всіх студентів кафедри вказаного курсу впорядкованих за алфавітом
                     break;
-                case 9:
+                case "9":
                    String nsp = DataInput.getString("Введіть ПІБ");
                     int counter = 0;
                    for (Student student : DataBase.getInstance().getStudents()) {
@@ -178,7 +178,7 @@ public class StatMenu {
                    if(counter==0)
                        System.out.println("Немає студентів з таким прізвищем");
                     break;
-                case 10:
+                case "10":
                     nsp = DataInput.getString("Введіть ПІБ");
                     counter = 0;
                     for (Teacher teacher : DataBase.getInstance().getTeachers()) {
@@ -189,7 +189,7 @@ public class StatMenu {
                     }
                     if(counter==0)System.out.println("Немає викладачів з таким прізвищем");
                     break;
-                case 11:
+                case "11":
                    String groupName = DataInput.getString("Введіть назву спеціальності");
                    int groupNum = DataInput.getInt("Введіть її номер");
                    String cathname = DataInput.getString("Введіть назву кафедри, до якої належить спеціальність");
@@ -210,7 +210,7 @@ public class StatMenu {
                        System.out.println("Немає такої групи");
                    }
                     break;
-                case 'b':
+                case "b":
                     return;
                 default:
                     System.out.println("Ви ввели невірну команду");

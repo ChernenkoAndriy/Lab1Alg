@@ -16,13 +16,13 @@ public class DataBase {
     private static DataBase instance;
 
     private DataBase() {
-        /*
+
         students = new Student[0];
         teachers = new Teacher[0];
         faculties = new Faculty[0];
         cathedras = new Cathedra[0];
         groups = new Group[0];
-         */
+         /*
         students = new Student[]{
                 new Student("ЧерненкоАндрійЮрійович", 4,  new Group("ІПЗ", new Cathedra("ІТ" ,new Faculty("ФІ")))),
                 new Student("СеменюкМаксимСеменович", 4,  new Group("ІПЗ", new Cathedra("ІТ" ,new Faculty("ФІ")))),
@@ -74,6 +74,8 @@ public class DataBase {
                 new Group("АНГЛГРАМ", new Cathedra("АНГЛМ" ,new Faculty("ФП"))),
                 new Group("ФІНАНСИ", new Cathedra("СТ" ,new Faculty("ФСНСТ"))),
         };
+*/
+
     }
     public Student[] getStudents() {
         return students;
