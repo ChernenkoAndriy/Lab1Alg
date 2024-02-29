@@ -10,7 +10,7 @@ public class Teacher extends Human implements Comparable<Human>{
     private Cathedra cathedra; // The academic department (Cathedra) to which the teacher is affiliated
 
     public Teacher(String nsp, Cathedra cathedra) {
-        this.nsp = nsp;
+        super(nsp);
         this.cathedra = cathedra;
     }
 
@@ -20,9 +20,6 @@ public class Teacher extends Human implements Comparable<Human>{
      * @param o Another teacher to compare with.
      * @return A negative value if this teacher is smaller, 0 if equal, and a positive value if this teacher is greater.
      */
-    public int compareTo(Teacher o) {
-        return super.compareTo(o);
-    }
     //getters and setters
     public Cathedra getCathedra() {
         return cathedra;
@@ -37,7 +34,10 @@ public class Teacher extends Human implements Comparable<Human>{
         super.setNsp(nsp);
         this.nsp=nsp;
     }
-    // Конструктор з трьома аргументами
 
+    @Override
+    public String toString() {
+        return "ПІБ: " + nsp + "    " + cathedra;
+    }
 }
 

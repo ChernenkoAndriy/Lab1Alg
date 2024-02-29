@@ -62,5 +62,10 @@ public class Group{
     public int hashCode() {
         return Objects.hash(getGroupNum(), getGroupName(), getCathedra());
     }
+
+    @Override
+    public String toString() {
+        return "Спеціальність: " + groupName + "    Номер спеціальності: " + groupNum + "   " + cathedra;
+    }
 }
 

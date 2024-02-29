@@ -36,4 +36,9 @@ public class Faculty{
     public int hashCode() {
         return Objects.hash(getFacName());
     }
+
+    @Override
+    public String toString() {
+        return "Факультет: " +  facName;
+    }
 }

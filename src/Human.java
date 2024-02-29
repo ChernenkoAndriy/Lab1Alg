@@ -4,7 +4,11 @@
  */
 public class Human implements Comparable<Human> {
 
-    private String nsp; // Name, Surname, and Patronymic
+    protected String nsp; // Name, Surname, and Patronymic
+
+    public Human(String nsp) {
+        this.nsp = nsp;
+    }
 
     /**
      * Compares this human with another human based on their names.
@@ -14,8 +18,9 @@ public class Human implements Comparable<Human> {
      */
     @Override
     public int compareTo(Human o) {
-        return this.nsp.compareTo(o.nsp);
+        return this.nsp.compareTo(o.getNsp());
     }
+
 
     //getters and setters
     public String getNsp() {

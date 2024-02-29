@@ -24,10 +24,10 @@ public class DataBase {
         groups = new Group[0];
          */
         students = new Student[]{
-                new Student("Черненко Андрій Юрійович", 4,  new Group("ІПЗ", new Cathedra("ІТ" ,new Faculty("ФІ")))),
-                new Student("Семенюк Максим Семенович", 4,  new Group("ІПЗ", new Cathedra("ІТ" ,new Faculty("ФІ")))),
-                new Student("Гринь Марія null", 2,  new Group("ІПЗ", new Cathedra("ІТ" ,new Faculty("ФІ")))),
-                new Student("Морміль Максим null", 2,  new Group("ІПЗ", new Cathedra("ІТ" ,new Faculty("ФІ")))),
+                new Student("ЧерненкоАндрійЮрійович", 4,  new Group("ІПЗ", new Cathedra("ІТ" ,new Faculty("ФІ")))),
+                new Student("СеменюкМаксимСеменович", 4,  new Group("ІПЗ", new Cathedra("ІТ" ,new Faculty("ФІ")))),
+                new Student("Гринь Марія n", 2,  new Group("ІПЗ", new Cathedra("ІТ" ,new Faculty("ФІ")))),
+                new Student("Морміль Максим n", 2,  new Group("ІПЗ", new Cathedra("ІТ" ,new Faculty("ФІ")))),
                 new Student("Силенко Ілля Володимирович", 3,  new Group("ІПЗ", new Cathedra("ІТ" ,new Faculty("ФІ")))),
                 new Student("Прохоров Олександр Прохоров", 3,  new Group("ІПЗ", new Cathedra("ІТ" ,new Faculty("ФІ")))),
                 new Student("N", 1,  new Group("ІПЗ", new Cathedra("ІТ" ,new Faculty("ФІ")))),

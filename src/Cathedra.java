@@ -46,5 +46,10 @@ public class Cathedra{
     public int hashCode() {
         return Objects.hash(getCathName(), getFaculty());
     }
+
+    @Override
+    public String toString() {
+        return "Кафедра " + cathName + "   " + faculty;
+    }
 }
 

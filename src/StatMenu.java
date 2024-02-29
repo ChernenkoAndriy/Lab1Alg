@@ -23,7 +23,7 @@ public class StatMenu {
             switch (act) {
                 case 1:
                     if (DataBase.getInstance().getStudents().length != 0) {
-                        System.out.println(Arrays.toString(studentsBycourses(DataBase.getInstance().getStudents())));
+                        ArrayManager.print(studentsBycourses(DataBase.getInstance().getStudents()));
                     } else {
                         System.out.println("Немає студентів");
                     }
@@ -38,7 +38,7 @@ public class StatMenu {
                             students = ArrayManager.addToAr(students, stud);
                      }
                     if(students.length!=0){
-                        System.out.println(Arrays.toString(humanByNames(students)));
+                  ArrayManager.print(humanByNames(students));
                     }else{
                         System.out.println("Немає студентів на факультеті");
                     }
@@ -56,7 +56,7 @@ public class StatMenu {
                                 teachers = ArrayManager.addToAr(teachers, teach);
                         }
                         if(teachers.length!=0){
-                            System.out.println(Arrays.toString(humanByNames(teachers)));
+                            ArrayManager.print(humanByNames(teachers));
                         }else{
                             System.out.println("Немає викладачів на факультеті");
                         }
@@ -75,7 +75,7 @@ public class StatMenu {
                                 array = ArrayManager.addToAr(array, student);
                         }
                         if (array.length != 0) {
-                            System.out.println(Arrays.toString(studentsBycourses(array)));
+                            ArrayManager.print(studentsBycourses(array));
                         } else {
                             System.out.println("Немає студентів");
                         }
@@ -95,7 +95,7 @@ public class StatMenu {
                                array = ArrayManager.addToAr(array, teacher);
                         }
                         if (array.length != 0) {
-                            System.out.println(Arrays.toString(humanByNames(array)));
+                            ArrayManager.print(humanByNames(array));
                         } else {
                             System.out.println("Немає студентів");
                         }
@@ -115,7 +115,7 @@ public class StatMenu {
                                 array = ArrayManager.addToAr(array, teacher);
                         }
                         if (array.length != 0) {
-                            System.out.println(Arrays.toString(humanByNames(array)));
+                            ArrayManager.print(humanByNames(array));
                         } else {
                             System.out.println("Немає викладачів");
                         }
@@ -136,7 +136,7 @@ public class StatMenu {
                                 array = ArrayManager.addToAr(array, stud);
                         }
                         if (array.length != 0) {
-                            System.out.println(Arrays.toString(array));
+                            ArrayManager.print(array);
                         } else {
                             System.out.println("Немає студентів такого курсу на такій кафедрі");
                         }
@@ -157,7 +157,7 @@ public class StatMenu {
                                 array = ArrayManager.addToAr(array, stud);
                         }
                         if (array.length != 0) {
-                            System.out.println(Arrays.toString(humanByNames(array)));
+                            ArrayManager.print(humanByNames(array));
                         } else {
                             System.out.println("Немає студентів");
                         }
@@ -175,7 +175,8 @@ public class StatMenu {
                            ++counter;
                        }
                    }
-                   if(counter==0)System.out.println("Немає студентів з таким прізвищем");
+                   if(counter==0)
+                       System.out.println("Немає студентів з таким прізвищем");
                     break;
                 case 10:
                     nsp = DataInput.getString("Введіть ПІБ");
@@ -201,7 +202,7 @@ public class StatMenu {
                                array = ArrayManager.addToAr(array, stud);
                        }
                        if(array.length!=0){
-                           System.out.println(Arrays.toString(array));
+                           ArrayManager.print(array);
                        }else{
                            System.out.println("Немає студентів на групі");
                        }
@@ -218,15 +219,20 @@ public class StatMenu {
     }
 
     private static Student[] studentsBycourses(Student[] students) {
-        for (int i = 1; i < students.length; i++) {
-            if (students[i].compareByCourse(students[i-1]) == -1) {
-                Student a = students[i];
-                students[i] = students[i - 1];
-                students[i - 1] = a;
+        int n = students.length;
+
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (students[j].getCourse() < students[j + 1].getCourse()) {
+                    // Обмін елементів, якщо потрібно
+                    Student temp = students[j];
+                    students[j] = students[j + 1];
+                    students[j + 1] = temp;
+                }
             }
         }
-        return students;
 
+        return students;
     }
 
     private static Human[] humanByNames(Human[] human) {

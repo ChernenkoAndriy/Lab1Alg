@@ -91,6 +91,11 @@ public class ArrayManager {
         }
         return false;
     }
+
+    public static <T> void print(T[] t){
+        for (T k : t)
+            System.out.println(k);
+    }
 }
 
 
