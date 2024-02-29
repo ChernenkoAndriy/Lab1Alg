@@ -13,7 +13,6 @@ public class EditMenu {
      * Конструктор класу EditMenu.
      */
     public EditMenu() {
-
     }
     /**
      * Метод, який запускає головне меню редагування.

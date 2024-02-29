@@ -17,7 +17,6 @@ public class AddMenu {
                     "5. Додати спеціальність до кафедри\n" +
                     "b. Повернутися до головного меню");
 
-
             switch (act) {
                 case '1':
                     addFaculty();
