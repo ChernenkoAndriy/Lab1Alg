@@ -331,6 +331,9 @@ public class EditMenu {
             System.out.println("Факультету з такою назвою не існує");
         }
     }
+    /**
+     * Метод для видалення всіх кафедр в межах факультету.
+     */
     private static void delAllCathedras(String facName) {
         for(int i=0;i< cathedras.length; i++){
             if(cathedras[i].getFaculty().getFacName().equals(facName)){
@@ -341,6 +344,7 @@ public class EditMenu {
             }
         }
     }
+
     /**
      * Метод для перейменування факультету.
      */

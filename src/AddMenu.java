@@ -1,12 +1,14 @@
-/*
-Цей клас (AddMenu) представляє меню додавання,
-де користувач може вибрати опції для додавання нових факультетів, кафедр до факультета,
-а також додавання нових студентів/викладачів до кафедри.
+/**
+ * The AddMenu class represents a menu for adding various entities such as faculties,
+ * cathedras to faculties, students to groups, teachers to cathedras, and specialties to cathedras.
  */
 public class AddMenu {
     public AddMenu() {
     }
 
+    /**
+     * Runs the add menu, allowing the user to choose actions for adding entities.
+     */
     public static void run() {
         while (true) {
             char act = DataInput.getChar("Введіть номер дії, яку хочете виконати:\n" +
@@ -41,6 +43,9 @@ public class AddMenu {
         }
     }
 
+    /**
+     * Adds a new faculty to the database.
+     */
     private static void addFaculty() {
         String facultyName = DataInput.getString("Введіть назву факультету:");
         Faculty faculty = new Faculty(facultyName);
@@ -48,6 +53,9 @@ public class AddMenu {
         System.out.println("Факультет успішно додано: " + facultyName);
     }
 
+    /**
+     * Adds a new cathedra to a specified faculty in the database.
+     */
     private static void addCathedraToFaculty() {
         if (DataBase.getInstance().getFaculties().length !=0) {
             String cathedraName = DataInput.getString("Введіть назву кафедри:");
@@ -71,6 +79,9 @@ public class AddMenu {
         }
     }
 
+    /**
+     * Adds a new student to a specified cathedra and group in the database.
+     */
     private static void addStudentToCathedra() {
        if(DataBase.getInstance().getGroups().length!=0){
            String nsp = DataInput.getString("Введіть ПІБ студента");
@@ -101,6 +112,9 @@ public class AddMenu {
        }
     }
 
+    /**
+     * Adds a new teacher to a specified cathedra in the database.
+     */
     private static void addTeacherToCathedra() {
         if(DataBase.getInstance().getCathedras().length!=0){
             String nsp = DataInput.getString("Введіть ПІБ викладача");
@@ -124,6 +138,9 @@ public class AddMenu {
         }
     }
 
+    /**
+     * Adds a new student group to a specified cathedra in the database.
+     */
     private static void addStudentGroup() {
         if(DataBase.getInstance().getCathedras().length!=0){
             int groupNum = DataInput.getInt("Введіть номер групи");

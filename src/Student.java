@@ -43,15 +43,38 @@ public class Student extends Human{
      */
 
     //getters and setters
+    /**
+     * Gets the academic year/course of the student.
+     *
+     * @return The academic year/course of the student.
+     */
     public int getCourse() {
         return course;
     }
+
+    /**
+     * Sets the academic year/course of the student.
+     *
+     * @param course The academic year/course to set for the student.
+     */
     public void setCourse(int course) {
         this.course = course;
     }
+
+    /**
+     * Gets the academic group to which the student belongs.
+     *
+     * @return The academic group to which the student belongs.
+     */
     public Group getGroup() {
         return group;
     }
+
+    /**
+     * Sets the academic group to which the student belongs.
+     *
+     * @param group The academic group to set for the student.
+     */
     public void setGroup(Group group) {
         this.group = group;
     }

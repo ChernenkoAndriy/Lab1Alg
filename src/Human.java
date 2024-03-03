@@ -6,6 +6,11 @@ public class Human implements Comparable<Human> {
 
     protected String nsp; // Name, Surname, and Patronymic
 
+    /**
+     * Constructs a new Human with the specified name, surname, and patronymic.
+     *
+     * @param nsp The name, surname, and patronymic.
+     */
     public Human(String nsp) {
         this.nsp = nsp;
     }
@@ -23,10 +28,22 @@ public class Human implements Comparable<Human> {
 
 
     //getters and setters
+    /**
+     * Gets the name, surname, and patronymic of the human.
+     *
+     * @return The name, surname, and patronymic.
+     */
     public String getNsp() {
         return nsp;
     }
+
+    /**
+     * Sets the name, surname, and patronymic of the human.
+     *
+     * @param nsp The new name, surname, and patronymic.
+     */
     public void setNsp(String nsp) {
         this.nsp = nsp;
     }
+
 }

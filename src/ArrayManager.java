@@ -92,6 +92,12 @@ public class ArrayManager {
         return false;
     }
 
+    /**
+     * Prints the elements of the array.
+     *
+     * @param t The array to be printed.
+     * @param <T> The type of elements in the array.
+     */
     public static <T> void print(T[] t){
         for (T k : t)
             System.out.println(k);

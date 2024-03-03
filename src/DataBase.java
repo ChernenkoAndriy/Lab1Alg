@@ -1,4 +1,7 @@
-
+/**
+ * The DataBase class represents a database for storing information about students, teachers,
+ * faculties, cathedras, and groups in a university.
+ */
 public class DataBase {
     private Student[] students;
     private Teacher[] teachers;
@@ -6,6 +9,11 @@ public class DataBase {
     private Cathedra[] cathedras;
     private Group[] groups;
 
+    /**
+     * Gets the instance of the DataBase class using the singleton pattern.
+     *
+     * @return The instance of the DataBase class.
+     */
     public static DataBase getInstance() {
         if (instance == null) {
             instance = new DataBase();
@@ -15,6 +23,9 @@ public class DataBase {
 
     private static DataBase instance;
 
+    /**
+     * Private constructor for the singleton pattern.
+     */
     private DataBase() {
 
         students = new Student[0];
@@ -77,42 +88,93 @@ public class DataBase {
 */
 
     }
+
+    /**
+     * Gets the array of students in the database.
+     *
+     * @return The array of students.
+     */
     public Student[] getStudents() {
         return students;
     }
 
+    /**
+     * Gets the array of teachers in the database.
+     *
+     * @return The array of teachers.
+     */
     public Teacher[] getTeachers() {
         return teachers;
     }
 
+    /**
+     * Gets the array of faculties in the database.
+     *
+     * @return The array of faculties.
+     */
     public Faculty[] getFaculties() {
         return faculties;
     }
 
+    /**
+     * Gets the array of cathedras in the database.
+     *
+     * @return The array of cathedras.
+     */
     public Cathedra[] getCathedras() {
         return cathedras;
     }
 
+    /**
+     * Gets the array of groups in the database.
+     *
+     * @return The array of groups.
+     */
     public Group[] getGroups() {
         return groups;
     }
 
+    /**
+     * Sets the array of students in the database.
+     *
+     * @param students The new array of students.
+     */
     public void setStudents(Student[] students) {
         this.students = students;
     }
 
+    /**
+     * Sets the array of teachers in the database.
+     *
+     * @param teachers The new array of teachers.
+     */
     public void setTeachers(Teacher[] teachers) {
         this.teachers = teachers;
     }
 
+    /**
+     * Sets the array of faculties in the database.
+     *
+     * @param faculties The new array of faculties.
+     */
     public void setFaculties(Faculty[] faculties) {
         this.faculties = faculties;
     }
 
+    /**
+     * Sets the array of cathedras in the database.
+     *
+     * @param cathedras The new array of cathedras.
+     */
     public void setCathedras(Cathedra[] cathedras) {
         this.cathedras = cathedras;
     }
 
+    /**
+     * Sets the array of groups in the database.
+     *
+     * @param groups The new array of groups.
+     */
     public void setGroups(Group[] groups) {
         this.groups = groups;
     }

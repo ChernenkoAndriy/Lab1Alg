@@ -1,9 +1,19 @@
 import java.util.Arrays;
 
+/**
+ * The StatMenu class represents a menu for performing various actions related to university data.
+ */
 public class StatMenu {
+
+    /**
+     * Constructs a new StatMenu instance.
+     */
     public StatMenu() {
     }
 
+    /**
+     * Runs the main loop of the statistics menu.
+     */
     public static void run() {
         while (true) {
             String act = DataInput.getString("Введіть номер дії, яку хочете виконати:\n" +
@@ -218,6 +228,12 @@ public class StatMenu {
         }
     }
 
+    /**
+     * Sorts an array of students based on their courses.
+     *
+     * @param students The array of students to be sorted.
+     * @return The sorted array of students.
+     */
     private static Student[] studentsBycourses(Student[] students) {
         int n = students.length;
 
@@ -235,6 +251,12 @@ public class StatMenu {
         return students;
     }
 
+    /**
+     * Displays humans (students or teachers) ordered alphabetically by names.
+     *
+     * @param human The array of humans.
+     * @return Sorted array of humans.
+     */
     private static Human[] humanByNames(Human[] human) {
         Arrays.sort(human);
         return human;
