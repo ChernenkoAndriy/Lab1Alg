@@ -75,10 +75,17 @@ public class AddMenu {
                     if (choice == 'b') break;
                     facultyName = DataInput.getString("Немає такого факультета:");
                 }
-                DataBase.getInstance().setCathedras(
-                        ArrayManager.addToAr(
-                                DataBase.getInstance().getCathedras(),
-                                new Cathedra(cathedraName, new Faculty(facultyName))));
+                if(ArrayManager.ifContains(DataBase.getInstance().getFaculties(), new Faculty(facultyName))){
+                    for( Faculty x:DataBase.getInstance().getFaculties()){
+                        if(x.getFacName().equals(facultyName)) {
+                            DataBase.getInstance().setCathedras(
+                                    ArrayManager.addToAr(
+                                            DataBase.getInstance().getCathedras(),
+                                            new Cathedra(cathedraName, x)));
+                        }
+                    }
+
+                }
             } else {
                 System.out.println("Така кафедра вже існує");
             }
@@ -114,8 +121,13 @@ public class AddMenu {
                 cathedra = DataInput.getString("Введіть кафедру на якій спеціальність");
                 faculty = DataInput.getString("Введіть факультет, на якому кафедра");
             }
-            DataBase.getInstance().setStudents(ArrayManager.addToAr(DataBase.getInstance().getStudents(),
-                    new Student(nsp, course, new Group(groupNum, groupName, new Cathedra(cathedra, new Faculty(faculty))))));
+            for(Group x: DataBase.getInstance().getGroups()){
+                if(x.equals( new Group(groupNum, groupName, new Cathedra(cathedra, new Faculty(faculty))))){
+                    DataBase.getInstance().setStudents(ArrayManager.addToAr(DataBase.getInstance().getStudents(),
+                            new Student(nsp, course, x)));
+                }
+            }
+
         } else {
             System.out.println("Немає ще спеціальностей для запису ");
         }
@@ -140,8 +152,13 @@ public class AddMenu {
                 cathedra = DataInput.getString("Введіть кафедру на яку запишемо викладача");
                 faculty = DataInput.getString("Введіть факультет, на якому кафедра");
             }
-            DataBase.getInstance().setTeachers(ArrayManager.addToAr(DataBase.getInstance().getTeachers(), new Teacher(nsp,
-                    new Cathedra(cathedra, new Faculty(faculty)))));
+            for(Cathedra x:DataBase.getInstance().getCathedras()){
+                if(x.equals(new Cathedra(cathedra, new Faculty(faculty)))){
+                    DataBase.getInstance().setTeachers(ArrayManager.addToAr(DataBase.getInstance().getTeachers(), new Teacher(nsp,
+                            x)));
+                }
+            }
+
         } else {
             System.out.println("Немає ще кафедр для запису");
         }
@@ -169,8 +186,20 @@ public class AddMenu {
                     cathedra = DataInput.getString("Введіть кафедру на якій спеціальность");
                     faculty = DataInput.getString("Введіть факультет, на якому кафедра");
                 }
-                DataBase.getInstance().setGroups(ArrayManager.addToAr(DataBase.getInstance().getGroups(),
-                        new Group(groupNum, groupName, new Cathedra(cathedra, new Faculty(faculty)))));
+                if(ArrayManager.ifContains(DataBase.getInstance().getFaculties(), new Faculty(faculty))){
+                    for( Faculty x:DataBase.getInstance().getFaculties()){
+                        if(x.getFacName().equals(faculty)) {
+                            for(Cathedra y:DataBase.getInstance().getCathedras()){
+                                if(y.getCathName().equals(cathedra)){
+                                    DataBase.getInstance().setGroups(ArrayManager.addToAr(DataBase.getInstance().getGroups(),
+                                            new Group(groupNum, groupName, y)));
+                                }
+                            }
+                        }
+                    }
+
+                }
+
             } else {
                 System.out.println("Така спеціальність вже є");
             }

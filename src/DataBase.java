@@ -33,6 +33,7 @@ public class DataBase {
 //        faculties = new Faculty[0];
 //        cathedras = new Cathedra[0];
 //        groups = new Group[0];
+
         faculties = new Faculty[]{new Faculty("ФІ"),
                 new Faculty("ФСНСТ"),
                 new Faculty("ФП")};
