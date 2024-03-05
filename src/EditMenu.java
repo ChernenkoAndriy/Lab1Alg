@@ -374,7 +374,6 @@ public class EditMenu {
      * Метод для видалення факультету.
      */
     private static void deleteFaculty() {
-
         String s = DataInput.getString("Введіть назву факультету. Все, що пов'язате з цим факультетом буде видалене!!! ");
         Faculty searchFac=new Faculty(s);
         if (ArrayManager.ifContains(faculties, searchFac)) {
