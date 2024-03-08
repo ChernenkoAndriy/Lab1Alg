@@ -49,17 +49,17 @@ public class DataBase {
                 new Cathedra("АНГЛМ" ,faculties[2]),
         };
         groups = new Group[]{
-                new Group("ІПЗ", cathedras[0]),
-                new Group("КН",cathedras[0]),
-                new Group("КБ",cathedras[0]),
-                new Group("ПМ", cathedras[0]),
-                new Group("ВЕБІНЖ", cathedras[1]),
-                new Group("РОУТЕРІНЖ",cathedras[1]),
-                new Group("ФІЛОЛОГІЯ", cathedras[2]),
-                new Group("СОЦІОЛІНГВІСТИКА", cathedras[2]),
-                new Group("ФІЛОСОФІЯ",  cathedras[7]),
-                new Group("АНГЛГРАМ", cathedras[8]),
-                new Group("ФІНАНСИ",  cathedras[5]),
+                new Group(121,"ІПЗ", cathedras[0]),
+                new Group(122,"КН",cathedras[0]),
+                new Group(123, "КБ",cathedras[0]),
+                new Group(124,"ПМ", cathedras[0]),
+                new Group(125,"ВЕБІНЖ", cathedras[1]),
+                new Group(126,"РОУТЕРІНЖ",cathedras[1]),
+                new Group(127,"ФІЛОЛОГІЯ", cathedras[2]),
+                new Group(128,"СОЦІОЛІНГВІСТИКА", cathedras[2]),
+                new Group(129,"ФІЛОСОФІЯ",  cathedras[7]),
+                new Group(130,"АНГЛГРАМ", cathedras[8]),
+                new Group(131,"ФІНАНСИ",  cathedras[5]),
         };
 
 
