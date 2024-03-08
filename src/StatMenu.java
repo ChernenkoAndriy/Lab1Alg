@@ -99,9 +99,9 @@ public class StatMenu {
                     faculty = DataInput.getString("Введіть назву факультета, до якого належить кафедра");
                     cath = new Cathedra(cathedraName, new Faculty(faculty));
                     if (ArrayManager.ifContains(DataBase.getInstance().getCathedras(), cath)) {
-                        Teacher[] array = new  Teacher[0];
-                        for ( Teacher teacher : DataBase.getInstance().getTeachers()) {
-                            if (teacher.getCathedra().equals(cath))
+                       Student[] array = new  Student[0];
+                        for ( Student teacher : DataBase.getInstance().getStudents()) {
+                            if (teacher.getGroup().getCathedra().equals(cath))
                                array = ArrayManager.addToAr(array, teacher);
                         }
                         if (array.length != 0) {
